@@ -1,0 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/10/01 11:54:02 by atahiri           #+#    #+#              #
+#    Updated: 2021/10/01 12:02:07 by atahiri          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = minishell
+
+SRCS =	*.c\
+
+INCLUDES = minishell.h
+
+READLINE_LIB_IMAC = -lreadline -L /Users/$(USER)/.brew/opt/readline/lib \
+			   -I /Users/$(USER)/.brew/opt/readline/include
+
+READLINE_LIB_MAC = -lreadline -L /usr/local/opt/readline/lib \
+			   -I /usr/local/opt/readline/include
+
+FLAGS = -Wall -Wextra -Werror -g
+
+all: $(NAME)
+
+$(NAME): $(SRCS) $(INCLUDES)
+	@gcc $(FLAGS) $(READLINE_LIB_MAC) $(SRCS) -o $(NAME)
+
+clean:
+			@rm -rf *.o
+
+fclean: 	clean
+			@rm -rf $(NAME)
+
+re: 		fclean all
