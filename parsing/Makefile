@@ -6,7 +6,7 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 11:54:02 by atahiri           #+#    #+#              #
-#    Updated: 2021/10/01 12:02:07 by atahiri          ###   ########.fr        #
+#    Updated: 2021/10/02 12:17:28 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ FLAGS = -Wall -Wextra -Werror -g
 all: $(NAME)
 
 $(NAME): $(SRCS) $(INCLUDES)
-	@gcc $(FLAGS) $(READLINE_LIB_MAC) $(SRCS) -o $(NAME)
+	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(SRCS) -o $(NAME)
 
 clean:
 			@rm -rf *.o
