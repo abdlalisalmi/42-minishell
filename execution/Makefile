@@ -2,6 +2,9 @@ NAME	=	minishell.a
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 SRCS 	=	main.c \
+			env/collect_env.c \
+			env/get_env.c \
+			env/set_env.c \
 			functions/ft_strlen.c \
 			functions/ft_putstr_fd.c \
 			functions/ft_memcopy.c \
@@ -10,13 +13,14 @@ SRCS 	=	main.c \
 			functions/ft_strchr.c \
 			functions/ft_isdigit.c \
 			functions/ft_strappend.c \
+			functions/ft_split.c \
 			builtins/ft_echo.c \
-			# builtins/ft_cd.c \
-			# builtins/ft_env.c \
-			# builtins/ft_exit.c \
-			# builtins/ft_export.c \
-			# builtins/ft_pwd.c \
-			# builtins/ft_unset.c \
+			builtins/ft_cd.c \
+			builtins/ft_env.c \
+			builtins/ft_exit.c \
+			builtins/ft_export.c \
+			builtins/ft_pwd.c \
+			builtins/ft_unset.c \
 			
 
 			
@@ -40,4 +44,4 @@ fclean: 	clean
 re: 		fclean all
 
 build:		re
-			@ rm -rf *.o $(NAME)
+			@ rm -rf *.o $(NAME) minishell.dSYM

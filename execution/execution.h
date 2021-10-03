@@ -66,6 +66,9 @@ void 	ft_echo(char **args, int n_args);
 /*
 ** Manage EnvVar functions
 */
+void collect_env(char **env);
+char *get_env(char *name);
+int	set_env(char *name, char *value);
 
 /*
 ** Manage History functions
@@ -86,6 +89,7 @@ char	*ft_strdup(const char *str);
 char	*ft_strchr(const char *str, int c);
 int		ft_isdigit(int arg);
 char	*ft_strappend(char *s1, char *s2);
+char	**ft_split(const char *ss, char c);
 
 
 #endif
