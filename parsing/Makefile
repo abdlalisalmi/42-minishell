@@ -6,7 +6,7 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 11:54:02 by atahiri           #+#    #+#              #
-#    Updated: 2021/10/02 12:17:28 by atahiri          ###   ########.fr        #
+#    Updated: 2021/10/03 12:23:02 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 SRCS =	*.c\
 
-INCLUDES = minishell.h
+INCLUDES =	includes/minishell.h
 
 READLINE_LIB_IMAC = -lreadline -L /Users/$(USER)/.brew/opt/readline/lib \
 			   -I /Users/$(USER)/.brew/opt/readline/include
@@ -33,6 +33,6 @@ clean:
 			@rm -rf *.o
 
 fclean: 	clean
-			@rm -rf $(NAME)
+			@rm -rf $(NAME) minishell.dSYM
 
 re: 		fclean all

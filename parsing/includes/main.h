@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/02 12:22:41 by atahiri          ###   ########.fr       */
+/*   Created: 2021/10/03 12:18:33 by atahiri           #+#    #+#             */
+/*   Updated: 2021/10/03 12:19:08 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
+#ifndef MAIN_H
+# define MAIN_H
 
 /* strerror() and printf() function */
 # include <stdio.h>
@@ -44,22 +39,5 @@
 
 # include <string.h>
 # include <sys/stat.h>
-
-
-# define COLORSTART "\e[38;5;226m"
-# define COLOREND "\e[0m"
-# define STRERRORCOLOR "\e[38;5;196m"
-
-typedef struct s_all
-{
-	int			quote;
-	int			d_quote;
-	char		*buff;
-	int 		nb_semicolons;
-	int			nb_pipes;
-
-}				t_all;
-
-t_all	g_all;
 
 #endif

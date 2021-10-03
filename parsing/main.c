@@ -6,11 +6,11 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:49:49 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/02 12:23:38 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/03 12:23:22 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "includes/minishell.h"
 
 int	collect_and_check_cmd_line(char **cmd_line)
 {
@@ -38,7 +38,7 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		collect_and_check_cmd_line(&cmd_line);
-		printf("%s", cmd_line);
+		printf("%s\n", cmd_line);
 	}
 	return (0);
 }
