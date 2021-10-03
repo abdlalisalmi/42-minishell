@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/03 12:27:45 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/03 12:29:28 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@
 
 typedef struct s_all
 {
-	int			quote;
-	int			d_quote;
-	char		*buff;
-	int			nb_semicolons;
-	int			nb_pipes;
+	
 
 }				t_all;
 
