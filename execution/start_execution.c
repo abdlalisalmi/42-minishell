@@ -1,25 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start_execution.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/10/04 12:31:02 by aes-salm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "execution.h"
 
-
-void test()
+int start_execution()
 {
-	g_all.n_commands = 1;
-	g_all.commands = malloc(sizeof(t_commands) * g_all.n_commands);
-	g_all.commands[0].n_args = 3;
-	g_all.commands[0].args = malloc(sizeof(char *) * g_all.commands[0].n_args);
-	g_all.commands[0].args[0] = "echo";
-	g_all.commands[0].args[1] = "hello world";
-	g_all.commands[0].args[2] = 0;
-}
-
-
-int main(int argc, char **argv, char **envp)
-{
-    collect_env(envp);
-    // ft_env(NULL, 0);
-
-	test();
-
     if (g_all.n_commands == 1)
 		execute_single_command(g_all.commands[0], envp);
 	else

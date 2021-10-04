@@ -78,6 +78,7 @@ void	execute_single_command(t_commands command, char **envp);
 */
 void	free_d_pointer(char **ptr);
 char	*get_cmd_path(char *cmd);
+char	**to_envp();
 
 /*
 ** Help functions

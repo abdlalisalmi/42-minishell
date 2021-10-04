@@ -6,20 +6,21 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 12:01:35 by aes-salm          #+#    #+#              #
-#    Updated: 2021/10/04 12:06:05 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/10/04 12:56:26 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	minishell.a
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
-SRCS 	=	start_execution.c \
+SRCS 	=	main.c \
 			execution/execute_single_command.c \
 			utils/free_d_pointer.c \
 			utils/get_cmd_path.c \
 			env/collect_env.c \
 			env/get_env.c \
 			env/set_env.c \
+			env/to_envp.c \
 			functions/ft_strlen.c \
 			functions/ft_putstr_fd.c \
 			functions/ft_memcopy.c \
@@ -45,7 +46,7 @@ SRCS 	=	start_execution.c \
 $(NAME) : 	$(SRCS)
 			@ $(CC) $(FLAGS) -c $(SRCS)
 			@ ar rc $(NAME) *.o
-			@ $(CC) $(FLAGS) start_execution.c $(NAME) -o minishell -g3 -fsanitize=address
+			@ $(CC) $(FLAGS) main.c $(NAME) -o minishell -g3 -fsanitize=address
 
 
 all: 		$(NAME)

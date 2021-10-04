@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   to_envp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 09:56:40 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 12:52:58 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/10/04 12:27:06 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/10/04 14:10:44 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-int	ft_strlen(char *str)
+char **to_envp()
 {
-	int i;
+    int i;
+    char **envp;
 
-	i = 0;
-	if (str)
-		while (str[i])
-			i++;
-	return (i);
+    envp = (char**)malloc(sizeof(char *) * g_all.n_env);
+    i = -1;
+    printf("%d\n", g_all.n_env);
+    while (++i < g_all.n_env)
+    {
+        envp[i] = ft_strdup(g_all.env[i].name);
+        envp[i] = ft_strappend(envp[i], "=");
+        envp[i] = ft_strappend(envp[i], g_all.env[i].value);
+        // printf("%s\n", envp[i]);
+    }
+    return(envp);
 }
