@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
+#    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 12:01:35 by aes-salm          #+#    #+#              #
-#    Updated: 2021/10/04 12:56:26 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/10/04 21:05:29 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME	=	minishell.a
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 SRCS 	=	main.c \
+			start_execution.c \
 			execution/execute_single_command.c \
 			utils/free_d_pointer.c \
 			utils/get_cmd_path.c \

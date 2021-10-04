@@ -70,7 +70,8 @@ int	set_env(char *name, char *value);
 /*
 ** Manage Execution functions
 */
-void	execute_single_command(t_commands command, char **envp);
+void	start_execution(void);
+void	execute_single_command(t_commands command);
 
 
 /*
@@ -78,7 +79,7 @@ void	execute_single_command(t_commands command, char **envp);
 */
 void	free_d_pointer(char **ptr);
 char	*get_cmd_path(char *cmd);
-char	**to_envp();
+char	**to_envp(void);
 
 /*
 ** Help functions

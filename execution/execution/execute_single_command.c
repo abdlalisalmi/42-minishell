@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_single_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/04 12:07:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/10/04 21:02:13 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void	exec_builtins(char **args, int n_args)
 		ft_unset(args, n_args);
 }
 
-void	exec_system_cmd(char *cmd_path, char **args, char **envp)
+void	exec_system_cmd(char *cmd_path, char **args)
 {
 	pid_t pid;
 	int status;
+	char **envp;
 
+	envp = to_envp();
 	pid = fork();
 	if (pid < 0)
 		ft_putstr_fd("Failed forking child..\n", 2);
@@ -57,10 +59,8 @@ void	exec_system_cmd(char *cmd_path, char **args, char **envp)
 		}
 	}
 	else
-	{
 		waitpid(pid, &status, 0);
-		printf("status = %d\n", status);
-	}
+	free_d_pointer(envp);
 }
 
 // void	setup_redirections(t_command command)
@@ -91,7 +91,7 @@ void	exec_system_cmd(char *cmd_path, char **args, char **envp)
 // 	// }
 // }
 
-void	execute_single_command(t_commands command, char **envp)
+void	execute_single_command(t_commands command)
 {
 	char **paths;
 	char *cmd_path;
@@ -109,6 +109,6 @@ void	execute_single_command(t_commands command, char **envp)
 			ft_putstr_fd(" command not found\n", 2);
 		}
 		else
-			exec_system_cmd(cmd_path, command.args, envp);
+			exec_system_cmd(cmd_path, command.args);
 	}	
 }
