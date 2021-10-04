@@ -1,7 +1,7 @@
 NAME	=	minishell.a
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
-SRCS 	=	main.c \
+SRCS 	=	execution.c \
 			env/collect_env.c \
 			env/get_env.c \
 			env/set_env.c \
@@ -30,7 +30,7 @@ SRCS 	=	main.c \
 $(NAME) : 	$(SRCS)
 			@ $(CC) $(FLAGS) -c $(SRCS)
 			@ ar rc $(NAME) *.o
-			@ $(CC) $(FLAGS) main.c $(NAME) -o minishell -g3 -fsanitize=address
+			@ $(CC) $(FLAGS) execution.c $(NAME) -o minishell -g3 -fsanitize=address
 
 
 all: 		$(NAME)

@@ -10,12 +10,10 @@
 # include <errno.h>
 # include <limits.h>
 
-
 # define RIGHT			1
 # define DOUBLERIGHT	2
 # define LEFT			3
-
-# define HISTSIZE		1000
+# define HEREDOC		4
 
 # define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
 
@@ -26,27 +24,26 @@ typedef struct 	s_env
 	char 		*value;
 }				t_env;
 
-typedef struct	s_history
-{
-	char		**commands;
-	int			n_commands;
-}				t_history;
-
 typedef struct	s_redirect
 {
 	int			type;
 	char		*file;
 }				t_redirect;
 
+typedef struct 			s_commands {
+	char 				**args;
+	int					n_args;
+
+	t_redirect			*redirect;
+	int 				n_redirect;
+}						t_commands;
 
 typedef struct s_all {
-	char		*buff;
-	int			s_quote;
-	int			d_quote;
-	
 	int			n_env;
 	t_env		*env;
-	t_history	history;
+
+	int			n_commands;
+	t_commands 	*commands;
 }				t_all;
 
 t_all	g_all;
