@@ -6,7 +6,7 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 11:54:02 by atahiri           #+#    #+#              #
-#    Updated: 2021/10/04 11:31:06 by atahiri          ###   ########.fr        #
+#    Updated: 2021/10/04 12:42:31 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,11 @@ SRCS =	main.c\
 		utils/trim_spaces.c\
 		utils/ft_strdup.c\
 		utils/ft_strlen.c\
+		utils/ft_putstr_fd.c\
+		utils/verif_quotes.c\
+		utils/ft_split.c\
+		utils/ft_dplen.c\
+		utils/print_out.c\
 		
 
 INCLUDES =	includes/minishell.h

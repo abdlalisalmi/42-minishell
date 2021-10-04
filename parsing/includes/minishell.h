@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 11:31:51 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/04 12:42:47 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ typedef struct s_all {
 
 	int			n_commands;
 	t_commands 	*commands;
+
+
+	int			s_quote;
+	int			d_quote;
 }				t_all;
 
 t_all	g_all;
@@ -61,5 +65,13 @@ t_all	g_all;
 char		*trim_spaces(char *str);
 char		*ft_strdup(const char *str);
 int			ft_strlen(char *s);
+void		ft_putstr_fd(char *s, int fd);
+int			verif_quotes(char *line);
+char		**ft_split(const char *ss, char c);
+
+int			starts_with(char *line);
+int			check_semicolon(char *line);
+int			ft_dplen(char **ptr);
+void		print_out(char **to_print);
 
 #endif

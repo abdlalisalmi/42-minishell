@@ -6,13 +6,51 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:49:49 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 11:49:04 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/04 12:45:52 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int	collect_and_check_cmd_line(char **cmd_line)
+int		number_of_pipes(char *buff)
+{
+	int i = -1;
+	int nb = 0;
+	while (buff[++i])
+		if (buff[i] == '|')
+			nb++;
+	return nb;
+}
+
+char	**split_by_pipe(char *buff)
+{
+    char	**splitted;
+    int		nb;
+    
+	nb = number_of_pipes(buff);
+    splitted = ft_split(buff, '|');
+	return splitted;
+}
+
+char		*remove_whitespaces(char *buff)
+{
+	char	*trimmed;
+	trimmed = trim_spaces(buff);
+	return trimmed;
+}
+
+int			count_number_of_args(char **str)
+{
+	int i = -1;
+	int count = 0;
+	while (str[++i] != NULL)
+	{
+		count++;
+	}
+	return count;
+}
+
+int		collect_and_check_cmd_line(char **cmd_line)
 {
 	*cmd_line = readline("MINISHELL$ ");
 	if (*cmd_line == NULL)
@@ -31,12 +69,48 @@ int	collect_and_check_cmd_line(char **cmd_line)
 void	start_parsing(char *line)
 {
 	char *trimed;
+	char **split;
+	char **trim_commands;
+	int nb;
 
 	trimed = trim_spaces(line);
-	printf("|%s|\n", trimed);
+	if (verif_quotes(trimed) == -1)
+			ft_putstr_fd("Error : quote not closed\n", 2);
+	if (starts_with(trimed) || check_semicolon(trimed))
+		return;
+	split = split_by_pipe(trimed);
+	nb = ft_dplen(split);
+	trim_commands = malloc(sizeof(char *) * (nb + 1));
+	// printf("|%s|\n", trimed);
+	int i = -1;
+	while (++i < nb)
+		trim_commands[i] = remove_whitespaces(split[i]);
+	trim_commands[i] = NULL;
+	int nb_command = count_number_of_args(trim_commands);
+	g_all.commands = malloc(sizeof(t_commands) * nb_command);
+
+	i = -1;
+	int j = 0;
+	while (++i < nb_command)
+	{
+		char **split_spaces = ft_split(trim_commands[i], ' ');
+		int count = count_number_of_args(split_spaces);
+		g_all.commands[i].n_args = count;
+		g_all.commands[i].args = (char **)malloc(sizeof(char *) * (count + 1));
+		j = 0;
+		while (j < count)
+		{
+			g_all.commands[i].args[j] = ft_strdup(split_spaces[j]);
+			j++;
+		}
+		g_all.commands[i].args[j] = NULL;
+	}
+	print_out(g_all.commands[0].args);
+	printf("%d", g_all.commands[0].n_args);
+	// printf("|%d|\n", nb);
 }
 
-int	main(int argc, char **argv, char **envp)
+int		main(int argc, char **argv, char **envp)
 {
 	char		*cmd_line;
 
