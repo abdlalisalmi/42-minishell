@@ -1,7 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/10/04 12:01:35 by aes-salm          #+#    #+#              #
+#    Updated: 2021/10/04 12:06:05 by aes-salm         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	=	minishell.a
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
-SRCS 	=	execution.c \
+SRCS 	=	start_execution.c \
+			execution/execute_single_command.c \
+			utils/free_d_pointer.c \
+			utils/get_cmd_path.c \
 			env/collect_env.c \
 			env/get_env.c \
 			env/set_env.c \
@@ -30,7 +45,7 @@ SRCS 	=	execution.c \
 $(NAME) : 	$(SRCS)
 			@ $(CC) $(FLAGS) -c $(SRCS)
 			@ ar rc $(NAME) *.o
-			@ $(CC) $(FLAGS) execution.c $(NAME) -o minishell -g3 -fsanitize=address
+			@ $(CC) $(FLAGS) start_execution.c $(NAME) -o minishell -g3 -fsanitize=address
 
 
 all: 		$(NAME)

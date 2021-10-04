@@ -68,12 +68,16 @@ char *get_env(char *name);
 int	set_env(char *name, char *value);
 
 /*
-** Manage History functions
-*/
-
-/*
 ** Manage Execution functions
 */
+void	execute_single_command(t_commands command, char **envp);
+
+
+/*
+** Utils functions
+*/
+void	free_d_pointer(char **ptr);
+char	*get_cmd_path(char *cmd);
 
 /*
 ** Help functions
