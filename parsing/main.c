@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:49:49 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/03 12:23:22 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/04 11:49:04 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ int	collect_and_check_cmd_line(char **cmd_line)
 	return (1);
 }
 
+void	start_parsing(char *line)
+{
+	char *trimed;
+
+	trimed = trim_spaces(line);
+	printf("|%s|\n", trimed);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	char		*cmd_line;
@@ -35,10 +43,13 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	(void)envp;
+	// collect_env(envp);
 	while (1)
 	{
-		collect_and_check_cmd_line(&cmd_line);
-		printf("%s\n", cmd_line);
+		if (collect_and_check_cmd_line(&cmd_line) == 0)
+			continue;
+		add_history(cmd_line);
+		start_parsing(cmd_line);
 	}
 	return (0);
 }

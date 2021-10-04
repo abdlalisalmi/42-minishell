@@ -6,13 +6,17 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/01 11:54:02 by atahiri           #+#    #+#              #
-#    Updated: 2021/10/03 12:23:02 by atahiri          ###   ########.fr        #
+#    Updated: 2021/10/04 11:31:06 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SRCS =	*.c\
+SRCS =	main.c\
+		utils/trim_spaces.c\
+		utils/ft_strdup.c\
+		utils/ft_strlen.c\
+		
 
 INCLUDES =	includes/minishell.h
 
