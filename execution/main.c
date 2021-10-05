@@ -7,13 +7,13 @@ void test()
 	g_all.commands = malloc(sizeof(t_commands) * g_all.n_commands);
 	g_all.commands[0].n_args = 3;
 	g_all.commands[0].args = malloc(sizeof(char *) * g_all.commands[0].n_args);
-	g_all.commands[0].args[0] = "ls";
-	g_all.commands[0].args[1] = "-l";
+	g_all.commands[0].args[0] = "cat";
+	g_all.commands[0].args[1] = 0;
 	g_all.commands[0].args[2] = 0;
 
 	g_all.commands[0].n_redirect = 1;
 	g_all.commands[0].redirect = malloc(sizeof(t_redirect) * 1);
-	g_all.commands[0].redirect[0].type = RIGHT;
+	g_all.commands[0].redirect[0].type = LEFT;
 	g_all.commands[0].redirect[0].file = "file.txt";
 
 }

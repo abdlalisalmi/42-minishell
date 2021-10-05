@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/05 11:03:52 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:25:40 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	exec_system_cmd(char *cmd_path, char **args)
 	free_d_pointer(envp);
 }
 
-void	setup_redirections(t_commands command)
+int	setup_redirections(t_commands command)
 {
 	int i;
 	int fd;
@@ -71,18 +71,30 @@ void	setup_redirections(t_commands command)
 	i = -1;
 	while (++i < command.n_redirect)
 	{
-		if (command.redirect[i].type == RIGHT)
-			fd = open(command.redirect[i].file, O_WRONLY | O_CREAT | O_TRUNC, PERMISSION);
-		if (command.redirect[i].type == DOUBLERIGHT)
-			fd = open(command.redirect[i].file, O_WRONLY | O_CREAT, PERMISSION);
-		dup2(fd, 1);
-		close(fd);
+		if (command.redirect[i].type == RIGHT || command.redirect[i].type == DOUBLERIGHT)
+		{
+			if (command.redirect[i].type == RIGHT)
+				fd = open(command.redirect[i].file, O_RDWR | O_CREAT | O_TRUNC, PERMISSION);
+			else if (command.redirect[i].type == DOUBLERIGHT)
+				fd = open(command.redirect[i].file, O_RDWR | O_CREAT | O_APPEND, PERMISSION);
+			dup2(fd, 1);
+			close(fd);
+		}
+		else if (command.redirect[i].type == LEFT)
+		{
+			fd = open(command.redirect[i].file, O_RDONLY, PERMISSION);
+			if (fd == -1)
+			{
+				ft_putstr_fd("minishell: no such file or directory: ", 2);
+				ft_putstr_fd(command.redirect[i].file, 2);
+				ft_putstr_fd("\n", 2);
+				return (1);
+			}
+			dup2(fd, 0);
+			close(fd);
+		}
 	}
-	
-	// if (command.r_left == 1)
-	// {
-	// 	// printf("Input file redirections");
-	// }
+	return (0);
 }
 
 void	execute_single_command(t_commands command)
@@ -90,7 +102,8 @@ void	execute_single_command(t_commands command)
 	char **paths;
 	char *cmd_path;
 
-	setup_redirections(command);
+	if (setup_redirections(command))
+		return;
 	if (is_builtins(command.args[0]))
 		exec_builtins(command.args, command.n_args);
 	else
