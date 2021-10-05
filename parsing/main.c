@@ -6,11 +6,74 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:49:49 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 12:45:52 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/05 13:07:01 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+
+void	save_redirection(int command_index, char *command)
+{
+	int i = -1;
+	char **space_split;
+	g_all.commands[command_index].redirect = malloc(sizeof(t_redirect) * g_all.commands[command_index].n_redirect);
+
+	space_split = ft_split(command, ' ');
+	
+	while(space_split[++i])
+	{
+		if (ft_strcmp(space_split[i], ">"))
+		{
+			g_all.commands[command_index].redirect->type = RIGHT;
+			g_all.commands[command_index].redirect->file = space_split[i + 1];
+		}
+		else if (ft_strcmp(space_split[i], "<"))
+		{
+			g_all.commands[command_index].redirect->type = LEFT;
+			g_all.commands[command_index].redirect->file = space_split[i + 1];
+		}
+		else if (ft_strcmp(space_split[i], ">>"))
+		{
+			g_all.commands[command_index].redirect->type = DOUBLERIGHT;
+			g_all.commands[command_index].redirect->file = space_split[i + 1];
+		}
+	}
+}
+
+int		count_number_of_redirections(char *command)
+{
+	int i = -1;
+	int nb = 0;
+	char **space_split;
+
+	space_split = ft_split(command, ' ');
+
+	while (space_split[++i])
+	{
+		if (ft_strcmp(space_split[i], ">") || ft_strcmp(space_split[i], ">>")
+		|| ft_strcmp(space_split[i], "<"))
+		{
+			nb++;
+		}
+	}
+	return nb;
+}
+
+void	parsing_redirections(char **commands, int nb_command)
+{
+	int i = -1;
+	
+	while (++i < nb_command)
+	{
+		g_all.commands[i].n_redirect = count_number_of_redirections(commands[i]);
+		if (g_all.commands[i].n_redirect > 0)
+		{
+			save_redirection(i, commands[i]);
+			// dprintf(2, "GGG ========= %s\n", g_all.commands[i].redirect->file);
+		}
+		// dprintf(2, "NB ========= %d\n", g_all.commands[i].n_redirect);
+	}
+}
 
 int		number_of_pipes(char *buff)
 {
@@ -89,6 +152,10 @@ void	start_parsing(char *line)
 	int nb_command = count_number_of_args(trim_commands);
 	g_all.commands = malloc(sizeof(t_commands) * nb_command);
 
+
+	parsing_redirections(trim_commands, nb_command);
+
+
 	i = -1;
 	int j = 0;
 	while (++i < nb_command)
@@ -105,8 +172,7 @@ void	start_parsing(char *line)
 		}
 		g_all.commands[i].args[j] = NULL;
 	}
-	print_out(g_all.commands[0].args);
-	printf("%d", g_all.commands[0].n_args);
+	// print_out(g_all.commands[0].args);
 	// printf("|%d|\n", nb);
 }
 
@@ -117,7 +183,7 @@ int		main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	(void)envp;
-	// collect_env(envp);
+	collect_env(envp);
 	while (1)
 	{
 		if (collect_and_check_cmd_line(&cmd_line) == 0)

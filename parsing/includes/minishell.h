@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 12:42:47 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/05 12:29:48 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define RIGHT			1
 # define DOUBLERIGHT	2
 # define LEFT			3
-# define HEREDOC		4
 
 # define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
 
@@ -65,6 +64,7 @@ t_all	g_all;
 char		*trim_spaces(char *str);
 char		*ft_strdup(const char *str);
 int			ft_strlen(char *s);
+int			ft_strcmp(char *str1, char *str2);
 void		ft_putstr_fd(char *s, int fd);
 int			verif_quotes(char *line);
 char		**ft_split(const char *ss, char c);
