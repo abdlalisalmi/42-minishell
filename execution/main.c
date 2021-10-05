@@ -10,6 +10,12 @@ void test()
 	g_all.commands[0].args[0] = "ls";
 	g_all.commands[0].args[1] = "-l";
 	g_all.commands[0].args[2] = 0;
+
+	g_all.commands[0].n_redirect = 1;
+	g_all.commands[0].redirect = malloc(sizeof(t_redirect) * 1);
+	g_all.commands[0].redirect[0].type = RIGHT;
+	g_all.commands[0].redirect[0].file = "file.txt";
+
 }
 
 

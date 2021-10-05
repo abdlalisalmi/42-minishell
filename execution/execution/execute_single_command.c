@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_single_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/04 21:02:13 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/10/05 11:03:52 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,40 +63,34 @@ void	exec_system_cmd(char *cmd_path, char **args)
 	free_d_pointer(envp);
 }
 
-// void	setup_redirections(t_command command)
-// {
-// 	int i;
-// 	int fd;
+void	setup_redirections(t_commands command)
+{
+	int i;
+	int fd;
 
-// 	i = -1;
-// 	while (++i < command.n_red)
-// 	{
-// 		printf("%s\n", command.redirect[0].file);
-// 	}
+	i = -1;
+	while (++i < command.n_redirect)
+	{
+		if (command.redirect[i].type == RIGHT)
+			fd = open(command.redirect[i].file, O_WRONLY | O_CREAT | O_TRUNC, PERMISSION);
+		if (command.redirect[i].type == DOUBLERIGHT)
+			fd = open(command.redirect[i].file, O_WRONLY | O_CREAT, PERMISSION);
+		dup2(fd, 1);
+		close(fd);
+	}
 	
-// 	// if (command.r_right == 1 || command.r_right == 2)
-// 	// {
-// 	// 	i = -1;
-// 	// 	while (command.outfile[++i] && command.r_right == 1)
-// 	// 		fd = open(command.outfile[i], O_WRONLY | O_CREAT | O_TRUNC, PERMISSION);
-// 	// 	i = -1;
-// 	// 	while (command.outfile[++i] && command.r_right == 2)
-// 	// 		fd = open(command.outfile[i], O_WRONLY | O_CREAT, PERMISSION);
-// 	// 	dup2(fd, 1);
-// 	// 	close(fd);
-// 	// }
-// 	// if (command.r_left == 1)
-// 	// {
-// 	// 	// printf("Input file redirections");
-// 	// }
-// }
+	// if (command.r_left == 1)
+	// {
+	// 	// printf("Input file redirections");
+	// }
+}
 
 void	execute_single_command(t_commands command)
 {
 	char **paths;
 	char *cmd_path;
 
-	// setup_redirections(command);
+	setup_redirections(command);
 	if (is_builtins(command.args[0]))
 		exec_builtins(command.args, command.n_args);
 	else
