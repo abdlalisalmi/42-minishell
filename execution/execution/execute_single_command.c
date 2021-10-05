@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/05 12:25:40 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:33:58 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	setup_redirections(t_commands command)
 	int i;
 	int fd;
 
+	if (command.n_redirect == 0)
+		return (0);
 	i = -1;
 	while (++i < command.n_redirect)
 	{

@@ -14,7 +14,7 @@ void test()
 	g_all.commands[0].n_redirect = 1;
 	g_all.commands[0].redirect = malloc(sizeof(t_redirect) * 1);
 	g_all.commands[0].redirect[0].type = LEFT;
-	g_all.commands[0].redirect[0].file = "file.txt";
+	g_all.commands[0].redirect[0].file = "filecdcd.txt";
 
 }
 
