@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:27:38 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/03 17:30:18 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:40:35 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void collect_env(char **env)
 	g_all.n_env = 0;
 	while (*env++ != 0)
 	{
-		g_all.env[i].name = ft_split(*env, '=')[0];
-		g_all.env[i].value = ft_split(*env, '=')[1];
+		g_all.env[i].name = ft__split(*env, '=')[0];
+		g_all.env[i].value = ft__split(*env, '=')[1];
 		g_all.n_env++;
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:49:49 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/05 13:07:01 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/09 17:56:21 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,8 @@ void	start_parsing(char *line)
 		}
 		g_all.commands[i].args[j] = NULL;
 	}
-	// print_out(g_all.commands[0].args);
-	// printf("|%d|\n", nb);
+	print_out(g_all.commands[0].args);
+	printf("|%d|\n", nb);
 }
 
 int		main(int argc, char **argv, char **envp)

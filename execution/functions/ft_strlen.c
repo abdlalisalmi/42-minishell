@@ -6,13 +6,13 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 09:56:40 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 12:52:58 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:35:23 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-int	ft_strlen(char *str)
+int	ft__strlen(char *str)
 {
 	int i;
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft__split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -74,7 +74,7 @@ static char	**fill_out(char *s, char **out, char c)
 	return (out);
 }
 
-char		**ft_split(const char *ss, char c)
+char		**ft__split(const char *ss, char c)
 {
 	char	**out;
 	char	*s;

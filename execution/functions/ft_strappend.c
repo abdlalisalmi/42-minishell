@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:23:57 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/04 12:59:35 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:35:23 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_strappend(char *s1, char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = ft__strlen(s1);
+	s2_len = ft__strlen(s2);
 	if (!(new_str = malloc(s1_len + s2_len + 1)))
 		return (NULL);
 	i = 0;

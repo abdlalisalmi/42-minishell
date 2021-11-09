@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:33:08 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/01 11:46:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:39:20 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ char exception_args(char **args)
 {
 	char *old_pwd;
 
-	if (ft_strcmp(*args, "-"))
+	if (ft__strcmp(*args, "-"))
 	{
 		if (!get_env("OLDPWD"))
 		{
-			ft_putstr_fd("cd: OLDPWD not set\n", 2);
+			ft__putstr_fd("cd: OLDPWD not set\n", 2);
 			set_env("?", "1");
 			return (1);
 		}
 		else
 		{
 			old_pwd = get_env("OLDPWD");
-			*args = ft_strdup(old_pwd);
-			ft_putstr_fd(old_pwd, 2);
-			ft_putstr_fd("\n", 2);
+			*args = ft__strdup(old_pwd);
+			ft__putstr_fd(old_pwd, 2);
+			ft__putstr_fd("\n", 2);
 			free(old_pwd);
 		}
 	}
 	else
-		*args = ft_strdup("..");
+		*args = ft__strdup("..");
 	return (0);
 }
 
@@ -44,9 +44,9 @@ int ft_cd(char **args, int n_args)
 	{
 		if (n_args == 3)
 		{
-			ft_putstr_fd("cd: string not in pwd: ", 2);
-			ft_putstr_fd(args[1], 2);
-			ft_putstr_fd("\n", 2);
+			ft__putstr_fd("cd: string not in pwd: ", 2);
+			ft__putstr_fd(args[1], 2);
+			ft__putstr_fd("\n", 2);
 		}
 		else
 			printf("cd: too many arguments\n");
@@ -54,14 +54,14 @@ int ft_cd(char **args, int n_args)
 	}
 	else
 	{
-		if (ft_strcmp(args[1], "-") || ft_strcmp(args[1], "--"))
+		if (ft__strcmp(args[1], "-") || ft__strcmp(args[1], "--"))
 			if (exception_args(&args[1]))
 				return (1);
 		if (chdir(args[1]) == -1)
 		{
-			ft_putstr_fd("cd: no such file or directory: ", 2);
-			ft_putstr_fd(args[1], 2);
-			ft_putstr_fd("\n", 2);
+			ft__putstr_fd("cd: no such file or directory: ", 2);
+			ft__putstr_fd(args[1], 2);
+			ft__putstr_fd("\n", 2);
 			set_env("?", "1");
 			return (1);
 		}

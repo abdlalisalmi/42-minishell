@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:20:44 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/01 11:46:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:35:23 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static long long	get_exit_code(const char *str)
 
 void ft_exit(char **args, int n_args)
 {
-	long long code;
+	unsigned long code;
 
 	if (n_args == 1)
 		exit(EXIT_SUCCESS);
@@ -64,7 +64,7 @@ void ft_exit(char **args, int n_args)
 		{
 			write(2, "exit\n", 5);
 			write(2, "minishell: exit: ", 17);
-			write(2, args[1], ft_strlen(args[1]));
+			write(2, args[1], ft__strlen(args[1]));
 			write(2, ": numeric argument required\n", 28);
 			exit(code);
 		}

@@ -6,13 +6,13 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 20:51:10 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/01 11:56:57 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:39:20 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-char	*ft_strdup(const char *str)
+char	*ft__strdup(const char *str)
 {
 	char			*ptr;
 	unsigned int	i;

@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:13:35 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/04 12:23:20 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:38:13 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int remove_new_line_check(char *arg)
 
 	if (arg[0] == '-' && arg[1] == '-')
 		return (0);
-	if (ft_strcmp(arg, "-n"))
+	if (ft__strcmp(arg, "-n"))
 		return (1);
 	if (arg[0] == '-')
 	{
@@ -36,6 +36,7 @@ void ft_echo(char **args, int n_args)
 	int i;
 	int remove_nl;
 
+	(void)n_args;
 	remove_nl = 0;
 	i = 0;
 	while (remove_new_line_check(args[++i]))

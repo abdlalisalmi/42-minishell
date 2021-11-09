@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:07:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/10/01 11:46:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:38:13 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_env(char **args, int n_args)
 	if (n_args > 1)
 	{
 		write(2, "env: ", 6);
-		write(2, args[1], ft_strlen(args[1]));
+		write(2, args[1], ft__strlen(args[1]));
 		write(2, ": No such file or directory\n", 28);
 		set_env("?", "127");
 	}
@@ -27,7 +27,7 @@ void ft_env(char **args, int n_args)
 	{
 		i = -1;
 		while (++i < g_all.n_env)
-			if (g_all.env[i].name && !ft_strcmp(g_all.env[i].name, "?"))
+			if (g_all.env[i].name && !ft__strcmp(g_all.env[i].name, "?"))
 				printf("%s=%s\n", g_all.env[i].name, g_all.env[i].value);
 		set_env("?", "0");
 	}
