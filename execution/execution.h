@@ -19,7 +19,7 @@ void 	ft_echo(char **args, int n_args);
 /*
 ** Manage Execution functions
 */
-void	start_execution(void);
+// void	start_execution(void);
 void	execute_single_command(t_commands command);
 
 /*

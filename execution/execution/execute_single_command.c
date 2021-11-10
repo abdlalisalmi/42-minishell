@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:38:13 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/10 12:47:10 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ int	setup_redirections(t_commands command)
 
 void	execute_single_command(t_commands command)
 {
-	char **paths;
-	(void)paths;
 	char *cmd_path;
 
 	if (setup_redirections(command))
