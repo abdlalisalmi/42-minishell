@@ -1,4 +1,4 @@
-NAME = 		minishell
+NAME = 		minishell.a
 
 P_SRCS 	= 	parsing/main.c	\
 			parsing/utils/trim_spaces.c\
@@ -52,13 +52,13 @@ FLAGS = -Wall -Wextra -Werror -g
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS)
-	@gcc $(FLAGS) $(READLINE_LIB_M_MAC) $(P_SRCS) $(E_SRCS) -o parsing/$(NAME)
+	@gcc $(FLAGS) $(READLINE_LIB_M_MAC) $(P_SRCS) $(E_SRCS) -o parsing/minishell
 
 clean:
-			@rm -rf *.o
+			@rm -rf *.o execution/minishell.dSYM execution/minishell
 
 fclean: 	clean
-			@rm -rf $(NAME) minishell.dSYM
+			@rm -rf $(NAME)
 
 re: 		fclean all
 
@@ -70,3 +70,5 @@ exec: 	$(E_SRCS)
 		@ $(CC) $(FLAGS) -c $(E_SRCS)
 		@ ar rc $(NAME) *.o
 		@ $(CC) $(FLAGS) execution/main.c $(NAME) -o execution/minishell -g3 -fsanitize=address
+		@rm -rf *.o execution/minishell.dSYM
+		./execution/minishell

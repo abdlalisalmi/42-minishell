@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/09 17:22:34 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/10 12:48:04 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,10 @@ t_all	g_all;
 void collect_env(char **env);
 char *get_env(char *name);
 int	set_env(char *name, char *value);
+
+/*
+** Execution endpoint
+*/
+void	start_execution(void);
 
 #endif

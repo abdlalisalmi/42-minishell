@@ -22,6 +22,8 @@ void test()
 int main(int argc, char **argv, char **envp)
 {
     collect_env(envp);
+	(void)argc;
+	(void)argv;
     // ft_env(NULL, 0);
 
     // char **env;
