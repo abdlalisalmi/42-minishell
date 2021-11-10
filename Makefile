@@ -13,6 +13,10 @@ P_SRCS 	= 	parsing/main.c	\
 
 E_SRCS 	=	execution/start_execution.c \
 			execution/execution/execute_single_command.c \
+			execution/execution/execute_multiple_commands.c \
+			execution/execution/is_builtins.c \
+			execution/execution/exec_builtins.c \
+			execution/execution/setup_redirections.c \
 			execution/utils/free_d_pointer.c \
 			execution/utils/get_cmd_path.c \
 			execution/env/collect_env.c \

@@ -3,6 +3,11 @@
 
 # include "../common.h"
 
+# define FILE_D_IN 0
+# define FILE_D_OUT 1
+# define PIPE_IN 1
+# define PIPE_OUT 0
+
 
 /*
 ** Builtins commands
@@ -20,7 +25,11 @@ void 	ft_echo(char **args, int n_args);
 ** Manage Execution functions
 */
 // void	start_execution(void);
+int     is_builtins(char *cmd);
+void    exec_builtins(char **args, int n_args);
+int     setup_redirections(t_commands command);
 void	execute_single_command(t_commands command);
+void    execute_multiple_commands();
 
 /*
 ** Utils functions

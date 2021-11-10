@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_execution.c                                  :+:      :+:    :+:   */
+/*   is_builtins.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/10 23:44:54 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/11/10 22:34:18 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/11/10 22:34:28 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "../execution.h"
 
-void start_execution(void)
+int is_builtins(char *cmd)
 {
-    if (g_all.n_commands == 1)
-		execute_single_command(g_all.commands[0]);
-	else if (g_all.n_commands > 1)
-		execute_multiple_commands();
+	if (ft__strcmp(cmd, "cd") || ft__strcmp(cmd, "echo") ||
+		ft__strcmp(cmd, "env") || ft__strcmp(cmd, "exit") ||
+		ft__strcmp(cmd, "export") || ft__strcmp(cmd, "pwd") ||
+		ft__strcmp(cmd, "unset") || ft__strcmp(cmd, "ECHO"))
+		return (1);
+	return (0);
 }
