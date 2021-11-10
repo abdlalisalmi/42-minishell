@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:49:49 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/10 12:47:04 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/10 13:07:06 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ int main(int argc, char **argv, char **envp)
 			continue;
 		add_history(cmd_line);
 		start_parsing(cmd_line);
-		
+		start_execution();
 	}
 	return (0);
 }
