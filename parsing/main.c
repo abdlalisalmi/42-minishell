@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:49:49 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/09 17:56:21 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/10 12:47:04 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void	save_redirection(int command_index, char *command)
+void save_redirection(int command_index, char *command)
 {
 	int i = -1;
 	char **space_split;
 	g_all.commands[command_index].redirect = malloc(sizeof(t_redirect) * g_all.commands[command_index].n_redirect);
 
 	space_split = ft_split(command, ' ');
-	
-	while(space_split[++i])
+
+	while (space_split[++i])
 	{
 		if (ft_strcmp(space_split[i], ">"))
 		{
@@ -40,7 +40,7 @@ void	save_redirection(int command_index, char *command)
 	}
 }
 
-int		count_number_of_redirections(char *command)
+int count_number_of_redirections(char *command)
 {
 	int i = -1;
 	int nb = 0;
@@ -50,8 +50,7 @@ int		count_number_of_redirections(char *command)
 
 	while (space_split[++i])
 	{
-		if (ft_strcmp(space_split[i], ">") || ft_strcmp(space_split[i], ">>")
-		|| ft_strcmp(space_split[i], "<"))
+		if (ft_strcmp(space_split[i], ">") || ft_strcmp(space_split[i], ">>") || ft_strcmp(space_split[i], "<"))
 		{
 			nb++;
 		}
@@ -59,10 +58,10 @@ int		count_number_of_redirections(char *command)
 	return nb;
 }
 
-void	parsing_redirections(char **commands, int nb_command)
+void parsing_redirections(char **commands, int nb_command)
 {
 	int i = -1;
-	
+
 	while (++i < nb_command)
 	{
 		g_all.commands[i].n_redirect = count_number_of_redirections(commands[i]);
@@ -75,7 +74,7 @@ void	parsing_redirections(char **commands, int nb_command)
 	}
 }
 
-int		number_of_pipes(char *buff)
+int number_of_pipes(char *buff)
 {
 	int i = -1;
 	int nb = 0;
@@ -85,24 +84,24 @@ int		number_of_pipes(char *buff)
 	return nb;
 }
 
-char	**split_by_pipe(char *buff)
+char **split_by_pipe(char *buff)
 {
-    char	**splitted;
-    int		nb;
-    
+	char **splitted;
+	int nb;
+
 	nb = number_of_pipes(buff);
-    splitted = ft_split(buff, '|');
+	splitted = ft_split(buff, '|');
 	return splitted;
 }
 
-char		*remove_whitespaces(char *buff)
+char *remove_whitespaces(char *buff)
 {
-	char	*trimmed;
+	char *trimmed;
 	trimmed = trim_spaces(buff);
 	return trimmed;
 }
 
-int			count_number_of_args(char **str)
+int count_number_of_args(char **str)
 {
 	int i = -1;
 	int count = 0;
@@ -113,7 +112,7 @@ int			count_number_of_args(char **str)
 	return count;
 }
 
-int		collect_and_check_cmd_line(char **cmd_line)
+int collect_and_check_cmd_line(char **cmd_line)
 {
 	*cmd_line = readline("MINISHELL$ ");
 	if (*cmd_line == NULL)
@@ -129,7 +128,7 @@ int		collect_and_check_cmd_line(char **cmd_line)
 	return (1);
 }
 
-void	start_parsing(char *line)
+void start_parsing(char *line)
 {
 	char *trimed;
 	char **split;
@@ -138,7 +137,7 @@ void	start_parsing(char *line)
 
 	trimed = trim_spaces(line);
 	if (verif_quotes(trimed) == -1)
-			ft_putstr_fd("Error : quote not closed\n", 2);
+		ft_putstr_fd("Error : quote not closed\n", 2);
 	if (starts_with(trimed) || check_semicolon(trimed))
 		return;
 	split = split_by_pipe(trimed);
@@ -152,9 +151,7 @@ void	start_parsing(char *line)
 	int nb_command = count_number_of_args(trim_commands);
 	g_all.commands = malloc(sizeof(t_commands) * nb_command);
 
-
 	parsing_redirections(trim_commands, nb_command);
-
 
 	i = -1;
 	int j = 0;
@@ -172,13 +169,17 @@ void	start_parsing(char *line)
 		}
 		g_all.commands[i].args[j] = NULL;
 	}
-	print_out(g_all.commands[0].args);
-	printf("|%d|\n", nb);
+	// print_out(g_all.commands[0].args);
+	// printf("\n%s\n", g_all.commands[0].redirect[0].file);
+
+	// printf("number of redirections command 1: %d\n", g_all.commands[0].n_redirect);
+	// printf("number of redirections command 2: %d\n", g_all.commands[1].n_redirect);
+	// printf("|%d|\n", nb);
 }
 
-int		main(int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
-	char		*cmd_line;
+	char *cmd_line;
 
 	(void)argc;
 	(void)argv;
@@ -190,6 +191,7 @@ int		main(int argc, char **argv, char **envp)
 			continue;
 		add_history(cmd_line);
 		start_parsing(cmd_line);
+		
 	}
 	return (0);
 }

@@ -52,7 +52,7 @@ FLAGS = -Wall -Wextra -Werror -g
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS)
-	@gcc $(FLAGS) $(READLINE_LIB_M_MAC) $(P_SRCS) $(E_SRCS) -o parsing/$(NAME)
+	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) $(E_SRCS) -o parsing/$(NAME) -g3 -fsanitize=address
 
 clean:
 			@rm -rf *.o
