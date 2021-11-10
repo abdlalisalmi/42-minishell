@@ -11,10 +11,15 @@ void test()
 	g_all.commands[0].args[1] = 0;
 	g_all.commands[0].args[2] = 0;
 
-	g_all.commands[0].n_redirect = 1;
-	g_all.commands[0].redirect = malloc(sizeof(t_redirect) * 1);
+	g_all.commands[0].n_redirect = 3;
+	g_all.commands[0].redirect = malloc(sizeof(t_redirect) * g_all.commands[0].n_redirect);
+
 	g_all.commands[0].redirect[0].type = LEFT;
-	g_all.commands[0].redirect[0].file = "filecdcd.txt";
+	g_all.commands[0].redirect[0].file = "Makefile";
+	g_all.commands[0].redirect[1].type = RIGHT;
+	g_all.commands[0].redirect[1].file = "file1.txt";
+	g_all.commands[0].redirect[3].type = RIGHT;
+	g_all.commands[0].redirect[3].file = "file2.txt";
 
 }
 

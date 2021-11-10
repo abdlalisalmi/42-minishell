@@ -6,13 +6,13 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/10 12:47:10 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:33:58 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../execution.h"
+#include "../execution.h"
 
-int		is_builtins(char *cmd)
+int is_builtins(char *cmd)
 {
 	if (ft__strcmp(cmd, "cd") || ft__strcmp(cmd, "echo") ||
 		ft__strcmp(cmd, "env") || ft__strcmp(cmd, "exit") ||
@@ -22,7 +22,7 @@ int		is_builtins(char *cmd)
 	return (0);
 }
 
-void	exec_builtins(char **args, int n_args)
+void exec_builtins(char **args, int n_args)
 {
 	if (ft__strcmp(args[0], "cd"))
 		ft_cd(args, n_args);
@@ -40,7 +40,7 @@ void	exec_builtins(char **args, int n_args)
 		ft_unset(args, n_args);
 }
 
-void	exec_system_cmd(char *cmd_path, char **args)
+void exec_system_cmd(char *cmd_path, char **args)
 {
 	pid_t pid;
 	int status;
@@ -48,10 +48,19 @@ void	exec_system_cmd(char *cmd_path, char **args)
 
 	envp = to_envp();
 	pid = fork();
+	// init pipe --> pipe(node->fd);
 	if (pid < 0)
 		ft__putstr_fd("Failed forking child..\n", 2);
 	else if (pid == 0)
 	{
+		// if (node->type == PIPE)
+		// {
+		// 	dup2(1, node->fd[1]);
+		// }
+		// if (noode->previous && node->previous->type == PIPE)
+		// {
+		// 	dup2(0, node->previous->fd[0]);
+		// }
 		if (execve(cmd_path, args, envp) == -1)
 		{
 			ft__putstr_fd(strerror(errno), 2);
@@ -59,17 +68,25 @@ void	exec_system_cmd(char *cmd_path, char **args)
 		}
 	}
 	else
+	{
+		// if (node->type == PIPE)
+		// {
+		// 	closee(node->fd[1]);
+		// }
+		// if (noode->previous && node->previous->type == PIPE)
+		// {
+		// 	close(node->previous->fd[0]);
+		// }
 		waitpid(pid, &status, 0);
+	}
 	free_d_pointer(envp);
 }
 
-int	setup_redirections(t_commands command)
+int setup_redirections(t_commands command)
 {
 	int i;
 	int fd;
 
-	if (command.n_redirect == 0)
-		return (0);
 	i = -1;
 	while (++i < command.n_redirect)
 	{
@@ -99,11 +116,11 @@ int	setup_redirections(t_commands command)
 	return (0);
 }
 
-void	execute_single_command(t_commands command)
+void execute_single_command(t_commands command)
 {
 	char *cmd_path;
 
-	if (setup_redirections(command))
+	if (command.n_redirect != 0 && setup_redirections(command))
 		return;
 	if (is_builtins(command.args[0]))
 		exec_builtins(command.args, command.n_args);
@@ -118,5 +135,5 @@ void	execute_single_command(t_commands command)
 		}
 		else
 			exec_system_cmd(cmd_path, command.args);
-	}	
+	}
 }
