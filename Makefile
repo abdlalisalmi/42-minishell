@@ -52,7 +52,7 @@ FLAGS = -Wall -Wextra -Werror -g
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS)
-	@gcc $(FLAGS) $(READLINE_LIB_M_MAC) $(P_SRCS) $(E_SRCS) -o parsing/minishell
+	@gcc $(FLAGS) $(READLINE_LIB_M_MAC) $(P_SRCS) $(E_SRCS) -o minishell
 
 clean:
 			@rm -rf *.o execution/minishell.dSYM execution/minishell
@@ -64,7 +64,7 @@ re: 		fclean all
 
 
 parsing: $(P_SRCS)
-	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) -o $(NAME)
+	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) -o parsing/minishell
 
 exec: 	$(E_SRCS)
 		@ $(CC) $(FLAGS) -c $(E_SRCS)
