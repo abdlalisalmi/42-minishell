@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/10 22:32:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:22:56 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define RIGHT			1
 # define DOUBLERIGHT	2
 # define LEFT			3
+# define HEREDOC		4
+# define NONE			5
 
 # define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
 

@@ -25,9 +25,13 @@ void 	ft_echo(char **args, int n_args);
 ** Manage Execution functions
 */
 // void	start_execution(void);
+void    init_pipes(int index);
+void    close_pipes(int index);
+int     setup_redirections(t_commands command);
+void    save_std_fds(int *stdin, int *stdout);
+void    restore_std_fds(int type, int stdin, int stdout);
 int     is_builtins(char *cmd);
 void    exec_builtins(char **args, int n_args);
-int     setup_redirections(t_commands command);
 void	execute_single_command(t_commands command);
 void    execute_multiple_commands();
 
