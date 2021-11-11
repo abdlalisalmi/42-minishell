@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/10 23:00:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/11 12:39:30 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ void execute_single_command(t_commands command)
 {
 	char *cmd_path;
 
+	// save FDS
 	if (command.n_redirect != 0 && setup_redirections(command))
 		return;
 	if (is_builtins(command.args[0]))
+	{
 		exec_builtins(command.args, command.n_args);
+		// restor the FDS
+	}
 	else
 	{
 		cmd_path = get_cmd_path(command.args[0]);
