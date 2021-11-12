@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/11 15:48:10 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:07:29 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void execute_child_command(int index, char** envp)
 	{
         close_pipes(index);
 		waitpid(pid, &status, 0);
+        if (status != 0)
+			g_all.exit_code = 1;
+		else
+			g_all.exit_code = 0;
 	}
 }
 

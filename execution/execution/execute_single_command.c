@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 15:04:57 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:07:50 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void exec_system_cmd(char *cmd_path, char **args)
 		{
 			ft__putstr_fd(strerror(errno), 2);
 			ft__putstr_fd("\n", 2);
-			exit(EXIT_FAILURE);
 		}
 	}
 	else
