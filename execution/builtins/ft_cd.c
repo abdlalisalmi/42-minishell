@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:33:08 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:39:20 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:18:18 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char exception_args(char **args)
 		if (!get_env("OLDPWD"))
 		{
 			ft__putstr_fd("cd: OLDPWD not set\n", 2);
-			set_env("?", "1");
+			g_all.exit_code = 1;
 			return (1);
 		}
 		else
@@ -50,7 +50,7 @@ int ft_cd(char **args, int n_args)
 		}
 		else
 			printf("cd: too many arguments\n");
-		set_env("?", "1");
+		g_all.exit_code = 1;
 	}
 	else
 	{
@@ -62,12 +62,12 @@ int ft_cd(char **args, int n_args)
 			ft__putstr_fd("cd: no such file or directory: ", 2);
 			ft__putstr_fd(args[1], 2);
 			ft__putstr_fd("\n", 2);
-			set_env("?", "1");
+			g_all.exit_code = 1;
 			return (1);
 		}
 		set_env("OLDPWD", get_env("PWD"));
 		set_env("PWD", ft_pwd());
-		set_env("?", "0");
+		g_all.exit_code = 0;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/11 15:22:56 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:17:10 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,15 @@ typedef struct s_all {
 	int			n_env;
 	t_env		*env;
 
+	int			exit_code;
+
 	int			n_commands;
 	t_commands 	*commands;
 
 
 	int			s_quote;
 	int			d_quote;
+
 }				t_all;
 
 t_all	g_all;

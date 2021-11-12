@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:39:09 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:38:13 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:19:51 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_env(void)
 		if (g_all.env[i].name && !ft__strcmp(g_all.env[i].name, "?"))
 			printf("declare -x %s=\"%s\"\n", g_all.env[i].name, g_all.env[i].value);
 	}
-	set_env("?", "0");
+	g_all.exit_code = 0;
 }
 
 int ft_export(char **args, int n_args)
@@ -70,13 +70,13 @@ int ft_export(char **args, int n_args)
 				ft__putstr_fd("minishell: export: `", 2);
 				ft__putstr_fd(args[i], 2);
 				ft__putstr_fd("': not a valid identifier\n", 2);
-				set_env("?", "1");
+				g_all.exit_code = 1;
 			}
 			else
 				if (ft_strchr(args[i], '='))
 				{
 					set_env(get_env_name(args[i]), get_env_value(args[i]));
-					set_env("?", "0");
+					g_all.exit_code = 0;
 				}
 			i++;
 		}

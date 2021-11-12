@@ -54,6 +54,7 @@ char	*ft_strchr(const char *str, int c);
 int		ft_isdigit(int arg);
 char	*ft_strappend(char *s1, char *s2);
 char	**ft__split(const char *ss, char c);
+char	*ft__itoa(int n);
 
 
 #endif

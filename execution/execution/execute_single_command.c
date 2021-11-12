@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/11 15:21:48 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:04:57 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,17 @@ void exec_system_cmd(char *cmd_path, char **args)
 		{
 			ft__putstr_fd(strerror(errno), 2);
 			ft__putstr_fd("\n", 2);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
+	{
 		waitpid(pid, &status, 0);
+		if (status != 0)
+			g_all.exit_code = 1;
+		else
+			g_all.exit_code = 0;
+	}
 	free_d_pointer(envp);
 }
 
@@ -57,6 +64,7 @@ void execute_single_command(t_commands command)
 			ft__putstr_fd("minishell: ", 2);
 			ft__putstr_fd(command.args[0], 2);
 			ft__putstr_fd(" command not found\n", 2);
+			g_all.exit_code = 127;
 		}
 		else
 			exec_system_cmd(cmd_path, command.args);

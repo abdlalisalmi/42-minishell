@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:03:15 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:38:13 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:26:54 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ void	ft_unset(char **args, int n_args)
 	int i;
 
 	i = 0;
-	while (++i < n_args)
+	while (++i < n_args && args[i])
 	{
 		if (ft_isdigit(args[i][0]) || ft_strchr(args[i], '='))
 		{
 			ft__putstr_fd("bash: unset:: `", 2);
 			ft__putstr_fd(args[i], 2);
 			ft__putstr_fd("': not a valid identifier\n", 2);
-			set_env("?", "1");
+			g_all.exit_code = 1;
 		}
 		else
 		{
 			update_env(args[i]);
-			set_env("?", "0");
+			g_all.exit_code = 0;
 		}
 	}
 }
