@@ -44,12 +44,6 @@ int main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
     // ft_env(NULL, 0);
-
-    // char **env;
-    // env = to_envp();
-    // int i = -1;
-    // while (++i < g_all.n_env - 1)
-    //     printf("%s\n", env[i]);
     
 	test();
 	
