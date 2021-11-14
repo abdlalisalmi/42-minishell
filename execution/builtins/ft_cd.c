@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:33:08 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:18:18 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/14 23:10:14 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,25 @@ char exception_args(char **args)
 	return (0);
 }
 
+int handle_cd_without_args(void)
+{
+	if (get_env("HOME") == NULL)
+	{
+		ft__putstr_fd("cd: HOME not set\n", 2);
+		g_all.exit_code = 1;
+		return (1);
+	}
+	else if (chdir(get_env("HOME")) == -1)
+	{
+		ft__putstr_fd("cd: ", 2);
+		ft__putstr_fd(get_env("HOME"), 2);
+		ft__putstr_fd(": No such file or directory\n", 2);
+		g_all.exit_code = 1;
+		return (1);
+	}
+	return (0);
+}
+
 int ft_cd(char **args, int n_args)
 {
 	if (n_args >= 3)
@@ -54,6 +73,8 @@ int ft_cd(char **args, int n_args)
 	}
 	else
 	{
+		if (n_args == 1)
+			return handle_cd_without_args();
 		if (ft__strcmp(args[1], "-") || ft__strcmp(args[1], "--"))
 			if (exception_args(&args[1]))
 				return (1);
