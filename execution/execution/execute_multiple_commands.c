@@ -61,8 +61,7 @@ void execute_child_command(int index, char** envp)
 		waitpid(pid, &status, 0);
         if (status != 0)
 			g_all.exit_code = 1;
-		else
-			g_all.exit_code = 0;
+		g_all.exit_code = 0;
 	}
 }
 
