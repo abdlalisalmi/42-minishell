@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:39:01 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/14 22:27:01 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/14 23:30:22 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,6 @@ char	*collect_env_variables(t_lexer *lexer)
 	return (str);
 }
 
-char	*collect_exit_status(t_lexer *lexer)
-{
-	char	*str;
-
-	str = ft_itoa(lexer->exit_status);
-	if (str == NULL)
-		put_error(errno);
-	lexer_forward(lexer);
-	return (str);
-}
-
 void	lexer_collect_env_variables(t_lexer *lexer, char **value)
 {
 	char	*str;
@@ -54,7 +43,10 @@ void	lexer_collect_env_variables(t_lexer *lexer, char **value)
 
 	lexer_forward(lexer);
 	if (lexer->cur_char == '?')
-		str = collect_exit_status(lexer);
+	{
+		lexer_forward(lexer);
+		str = get_env("?");
+	}
 	else if (lexer->cur_char != '_' && !ft_isalpha(lexer->cur_char))
 	{
 		str = ft_substr(lexer->cmd_line, lexer->cur_index - 1, 2);

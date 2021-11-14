@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:58:25 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/11 23:40:11 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/14 23:29:54 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_lexer
 	char *cmd_line;
 	int cur_index;
 	char cur_char;
-	int exit_status;
 } t_lexer;
 
 t_token	*lexer_get_next_token(t_lexer *lexer);

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 01:41:10 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/11 15:41:43 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/14 23:29:51 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_lexer	*init_lexer(char *cmd_line)
 	lexer->cmd_line = cmd_line;
 	lexer->cur_index = 0;
 	lexer->cur_char = cmd_line[0];
-	lexer->exit_status = 0; // need to handle in future
 	return (lexer);
 }
 
