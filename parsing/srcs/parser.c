@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:11:26 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 12:11:35 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 01:14:03 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 11:15:05 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../includes/parser.h"
 
-void	ft_putchar_fd(char c, int fd)
+t_parser *init_parser_lexer(char *line)
 {
-	write(fd, &c, 1);
-}
+	t_parser *parser;
+	t_lexer *lexer;
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	int i;
-
-	i = 0;
-	if (!s || !fd)
-		return ;
-	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
+	lexer = init_lexer(line);
+	parser = (t_parser *)malloc(sizeof(t_parser));
+	if (parser == NULL)
+		put_error(errno);
+	parser->lexer = lexer;
+	parser->cur_token = lexer_get_next_token(lexer);
+	parser->prev_token = NULL;
+	return (parser);
 }

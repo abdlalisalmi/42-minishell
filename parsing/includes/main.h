@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/03 12:18:33 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/03 12:19:08 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/10 23:55:39 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/12 01:44:42 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,14 @@
 
 # include <string.h>
 # include <sys/stat.h>
+
+int		ft_strlen(const char *s);
+char	*ft_strdup(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_isalnum(int c);
+int		ft_isalpha(int c);
+char	*ft_itoa(int n);
+void	*realloc_edited(void *old_alloc, size_t count, size_t old_size);
 
 #endif

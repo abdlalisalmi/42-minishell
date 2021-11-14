@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_execution.c                                  :+:      :+:    :+:   */
+/*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/14 21:46:37 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/10 23:58:19 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 15:33:51 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#ifndef TOKENIZER_H
+#define TOKENIZER_H
 
-void start_execution(void)
+typedef enum e_token_type
 {
-    if (g_all.n_commands == 1)
-		execute_single_command(g_all.commands[0]);
-	else if (g_all.n_commands > 1)
-		execute_multiple_commands();
-}
+	TK_WORD,
+	TK_PIPE,
+	TK_GREAT,
+	TK_DGREAT,
+	TK_LESS,
+	TK_HERE_DOC,
+	TK_EOF
+} t_token_type;
+
+typedef struct s_token
+{
+	t_token_type type;
+	char *value;
+} t_token;
+
+void	put_error(int errnum);
+t_token	*init_token(t_token_type type, char *value);
+
+#endif

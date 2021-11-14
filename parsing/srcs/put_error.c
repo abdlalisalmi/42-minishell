@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_execution.c                                  :+:      :+:    :+:   */
+/*   put_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/14 21:46:37 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 01:17:27 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 15:34:44 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "../includes/main.h"
+#include "../includes/tokenizer.h"
 
-void start_execution(void)
+void	put_error(int errnum)
 {
-    if (g_all.n_commands == 1)
-		execute_single_command(g_all.commands[0]);
-	else if (g_all.n_commands > 1)
-		execute_multiple_commands();
+	char	*str;
+
+	str = strerror(errnum);
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
+	exit(EXIT_FAILURE);
 }

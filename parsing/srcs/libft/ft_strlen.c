@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_execution.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/14 21:46:37 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 01:18:30 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 02:27:09 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "../../includes/main.h"
 
-void start_execution(void)
+int	ft_strlen(const char *s)
 {
-    if (g_all.n_commands == 1)
-		execute_single_command(g_all.commands[0]);
-	else if (g_all.n_commands > 1)
-		execute_multiple_commands();
+	int		i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

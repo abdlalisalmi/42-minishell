@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_execution.c                                  :+:      :+:    :+:   */
+/*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/14 21:46:37 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 01:03:08 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/14 22:04:21 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "../includes/parser.h"
 
-void start_execution(void)
+int check_cmd_line(char **line)
 {
-    if (g_all.n_commands == 1)
-		execute_single_command(g_all.commands[0]);
-	else if (g_all.n_commands > 1)
-		execute_multiple_commands();
+	*line = readline("MINISHELL$ ");
+	if (*line == NULL)
+	{
+		write(2, "\033[MINISHELL$ exit\n", 18);
+		exit(0);
+	}
+	if (line[0][0] == '\0')
+	{
+		free(*line);
+		return (0);
+	}
+	return (1);
 }

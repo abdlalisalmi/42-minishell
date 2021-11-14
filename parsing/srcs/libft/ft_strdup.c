@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 11:30:04 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 11:30:15 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 01:34:57 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 02:27:13 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/main.h"
 
-int			ft_strlen(char *s)
+char	*ft_strdup(const char *str)
 {
-	int i;
+	char			*ptr;
+	unsigned int	i;
 
 	i = 0;
-	while (s[i])
+	while (str[i])
 		i++;
-	return (i);
+	if (!(ptr = malloc(i + 1)))
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		ptr[i] = str[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

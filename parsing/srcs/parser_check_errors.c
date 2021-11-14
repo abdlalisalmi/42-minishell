@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   parser_check_errors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 11:27:46 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 11:28:10 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/12 18:11:35 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/12 18:13:23 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../includes/parser.h"
 
-char	*ft_strdup(const char *str)
+int	parser_check_errors(t_parser *parser)
 {
-	char			*ptr;
-	unsigned int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	if (!(ptr = malloc(i + 1)))
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		ptr[i] = str[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	if (parser->cur_token->type == TK_PIPE
+		|| parser->cur_token->type == TK_EOF)
+		return (update_token(parser, TK_WORD));
+	return (0);
 }

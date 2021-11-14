@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 12:24:16 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/05 12:24:34 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 23:46:18 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 23:46:28 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/main.h"
 
-int	ft_strcmp(char *str1, char *str2)
+int	ft_isalpha(int c)
 {
-	int	i;
-
-	i = 0;
-	if ((str1 == NULL && str2 != NULL) || (str2 == NULL && str1 != NULL))
-		return (0);
-	if (str1 == NULL && str2 == NULL)
-		return (1);
-	while (str1[i] == str2[i])
-	{
-		if (str1[i] == '\0' || str2[i] == '\0')
-			break ;
-		i++;
-	}
-	if (str1[i] == '\0' && str2[i] == '\0')
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
 	return (0);
 }
