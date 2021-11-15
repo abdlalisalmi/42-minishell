@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/14 20:37:19 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 13:29:19 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <limits.h>
-
-# define LEFT			0
-# define RIGHT			1
-# define DOUBLERIGHT	2
-# define HEREDOC		3
-# define NONE			4
-
-# define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
 
 
 typedef struct 	s_env 

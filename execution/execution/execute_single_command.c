@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/15 13:15:55 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:30:00 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void execute_single_command(t_commands command)
 	char *cmd_path;
 	int stdin;
 	int stdout;
-
-	printf("File: %s\nType: %d\n", command.redirect[0].file, command.redirect[0].type);
 
 	save_std_fds(&stdin, &stdout);
 	if (command.n_redirect > 0 && setup_redirections(command))
