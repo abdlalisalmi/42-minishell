@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 00:50:45 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/14 19:14:31 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 01:08:21 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ t_tree		*start_parsing(t_parser *parser)
 	{
 		pipeline = parser_pipeline(parser, pipeline);
 	}
-	return (pipeline);
+	return (fill_pipe_size_of_all_nodes(pipeline));
 }

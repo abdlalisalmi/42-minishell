@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:55:39 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/12 01:44:42 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 01:47:10 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ int		ft_strlen(const char *s);
 char	*ft_strdup(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin_char(char const *s1, char const *s2, char c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
+int		ft_num_words(char const *s1);
 char	*ft_itoa(int n);
 void	*realloc_edited(void *old_alloc, size_t count, size_t old_size);
 

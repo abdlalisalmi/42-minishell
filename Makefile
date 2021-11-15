@@ -19,10 +19,13 @@ P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/freeing.c \
 			parsing/srcs/parser_check_errors.c \
 			parsing/srcs/fill_execute_struct.c \
+			parsing/srcs/collect_env_inline.c \
 			parsing/srcs/libft/ft_strlen.c \
 			parsing/srcs/libft/ft_strdup.c \
 			parsing/srcs/libft/ft_substr.c \
 			parsing/srcs/libft/ft_strjoin.c \
+			parsing/srcs/libft/ft_strjoin_char.c \
+			parsing/srcs/libft/ft_num_words.c \
 			parsing/srcs/libft/ft_isalnum.c \
 			parsing/srcs/libft/ft_isalpha.c \
 			parsing/srcs/libft/ft_itoa.c \
@@ -82,7 +85,7 @@ READLINE_LIB_M_MAC = -lreadline -L /opt/homebrew/opt/readline/lib \
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS) $(INCLUDES)
-	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) $(E_SRCS) -o minishell
+	@gcc $(FLAGS) $(READLINE_LIB_MAC) $(P_SRCS) $(E_SRCS) -o minishell
 
 clean:
 			@rm -rf *.o 

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 01:02:44 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/14 19:41:39 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 00:58:29 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	parse_cmd_args(t_parser *parser, t_tree *tree)
 		tree->args_val[tree->args_size - 1] = parser->cur_token->value;
 		update_token(parser, TK_WORD);
 	}
-	// to_print(tree);
-	// printf("N_COMMANDS+++ === %d\n", tree->pipe_size);
 }
 
 t_tree		*parser_single_command(t_parser *parser)

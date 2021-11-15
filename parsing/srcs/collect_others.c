@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:39:41 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/13 19:56:15 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 01:38:41 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ t_token		*collect_others(t_lexer *lexer)
 			str = collect_single_quotes(lexer);
 		else if (lexer->cur_char == '"')
 			str = collect_double_quotes(lexer);
+		else if (lexer->cur_char == '$')
+			str = collect_env_inline(lexer, ft_strlen(value));
 		else
 			str = collect_simple_chars(lexer);
 		add_to_value(&value, str);
