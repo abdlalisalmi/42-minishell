@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:54:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/15 16:29:15 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:27:32 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ int main(int argc, char **argv, char **envp)
 		parser = init_parser_lexer(cmd_line);
 		tree = start_parsing(parser);
 		free_parser(parser);
-
-		fill_execute_struct(tree);
-		start_execution();
+		if (tree != NULL)
+		{
+			fill_execute_struct(tree);
+			start_execution();
+		} else {
+			g_all.exit_code = 258;
+		}
 		
 		// system("leaks minishell");
 		// free_execute_struct(tree);
