@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/14 23:51:02 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 16:01:23 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ void handle_under_env(void)
 		set_env("_", g_all.commands[l_cmd].args[l_args]);
 }
 
+void free_execution_struct(void)
+{
+	int i;
+	int r;
+
+	i = -1;
+	while (++i < g_all.n_commands)
+	{
+		free_d_pointer(g_all.commands[i].args);
+		r = -1;
+		if (g_all.commands[i].n_redirect > 0)
+		{
+			while (++r < g_all.commands[i].n_redirect)
+				free(g_all.commands[i].redirect[r].file);
+			free(g_all.commands[i].redirect);
+		}
+		free(g_all.commands);
+	}
+}
+
 void start_execution(void)
 {
 	handle_under_env();
@@ -33,4 +53,5 @@ void start_execution(void)
 		execute_single_command(g_all.commands[0]);
 	else if (g_all.n_commands > 1)
 		execute_multiple_commands();
+	free_execution_struct();
 }

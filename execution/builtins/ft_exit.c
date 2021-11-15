@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:20:44 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:35:23 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 14:11:01 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void ft_exit(char **args, int n_args)
 			write(2, "minishell: exit: ", 17);
 			write(2, args[1], ft__strlen(args[1]));
 			write(2, ": numeric argument required\n", 28);
-			exit(code);
+			exit(255);
 		}
 		else if (n_args >= 3)
 			write(2, "minishell: exit: too many arguments\n", 36);

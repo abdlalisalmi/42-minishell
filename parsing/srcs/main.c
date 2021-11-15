@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:54:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/14 22:07:22 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 16:29:15 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int main(int argc, char **argv, char **envp)
 
 		fill_execute_struct(tree);
 		start_execution();
+		
+		// system("leaks minishell");
 		// free_execute_struct(tree);
 
 		// to_print(tree);
