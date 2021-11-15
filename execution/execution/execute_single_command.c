@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/15 13:30:00 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:36:40 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void exec_system_cmd(char *cmd_path, char **args)
 		waitpid(pid, &status, 0);
 		if (status != 0)
 			g_all.exit_code = 1;
-		else
-			g_all.exit_code = 0;
+		g_all.exit_code = 0;
 	}
 	free_d_pointer(envp);
 }

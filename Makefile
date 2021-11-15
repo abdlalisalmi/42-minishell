@@ -1,5 +1,5 @@
 NAME = 		minishell
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/readline.c \
