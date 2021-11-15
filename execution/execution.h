@@ -3,11 +3,18 @@
 
 # include "../common.h"
 
+# define LEFT			0
+# define RIGHT			1
+# define DOUBLERIGHT	2
+# define HEREDOC		3
+# define NONE			4
+
 # define FILE_D_IN 0
 # define FILE_D_OUT 1
 # define PIPE_IN 1
 # define PIPE_OUT 0
 
+# define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
 
 /*
 ** Builtins commands

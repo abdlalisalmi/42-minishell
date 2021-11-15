@@ -1,0 +1,14 @@
+total 424
+drwxr-xr-x  13 aes-salm  2019     442 Nov 15 13:29 .
+drwxr-xr-x   9 aes-salm  2019     306 Nov 10 22:43 ..
+drwxr-xr-x  15 aes-salm  2019     510 Nov 15 13:28 .git
+-rw-r--r--   1 aes-salm  2019      45 Nov 14 22:41 .gitignore
+-rw-r--r--   1 aes-salm  2019    3283 Nov 15 13:03 Makefile
+-rw-r--r--   1 aes-salm  2019      14 Nov 10 11:40 README.md
+-rw-r--r--   1 aes-salm  2019    1733 Nov 15 13:29 common.h
+drwxr-xr-x  11 aes-salm  2019     374 Nov 15 13:02 execution
+-rw-r--r--   1 aes-salm  2019       0 Nov 15 13:31 file
+-rwxr-xr-x   1 aes-salm  2019   58020 Nov 15 13:29 minishell
+-rw-r--r--   1 aes-salm  2019  136792 Nov 12 15:07 minishell.a
+drwxr-xr-x   3 aes-salm  2019     102 Nov 15 13:29 minishell.dSYM
+drwxr-xr-x   4 aes-salm  2019     136 Nov 14 23:02 parsing
