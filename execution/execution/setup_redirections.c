@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:59:55 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 12:09:21 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:39:03 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,4 @@ int setup_redirections(t_commands command)
 		}
 	}
 	return (0);
-}
+}`
