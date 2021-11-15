@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:27:38 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 00:10:24 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:30:14 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void handle_env(char *env, int env_index)
 	eq_index = equal_index(env);
 	env_len = ft__strlen(env);
 	key = ft__substr(env, 0, eq_index);
-	if (env_index != env_len)
+	if (eq_index != env_len)
 		value = ft__substr(env, eq_index + 1, env_len - eq_index);
 	else
 		value = ft__strdup("");

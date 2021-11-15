@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:07:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:19:31 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:42:55 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void ft_env(char **args, int n_args)
 	{
 		i = -1;
 		while (++i < g_all.n_env)
-			if (g_all.env[i].name && !ft__strcmp(g_all.env[i].name, "?"))
+			if (g_all.env[i].name && g_all.env[i].value)
 				printf("%s=%s\n", g_all.env[i].name, g_all.env[i].value);
 		g_all.exit_code = 0;
 	}
