@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 15:07:50 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:15:55 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,13 @@ void execute_single_command(t_commands command)
 	int stdin;
 	int stdout;
 
+	printf("File: %s\nType: %d\n", command.redirect[0].file, command.redirect[0].type);
+
 	save_std_fds(&stdin, &stdout);
-	if (command.n_redirect != 0 && setup_redirections(command))
+	if (command.n_redirect > 0 && setup_redirections(command))
 		return;
 	if (is_builtins(command.args[0]))
-	{
 		exec_builtins(command.args, command.n_args);
-		restore_std_fds(NONE, stdin, stdout);
-	}
 	else
 	{
 		cmd_path = get_cmd_path(command.args[0]);
@@ -68,4 +67,5 @@ void execute_single_command(t_commands command)
 		else
 			exec_system_cmd(cmd_path, command.args);
 	}
+	restore_std_fds(NONE, stdin, stdout);
 }
