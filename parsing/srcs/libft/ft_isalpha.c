@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dplen.c                                         :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:32:02 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 12:34:07 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 23:46:18 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 23:46:28 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/main.h"
 
-int		ft_dplen(char **ptr)
+int	ft_isalpha(int c)
 {
-	int len;
-
-	len = 0;
-	while (ptr[len] != 0)
-		len++;
-	return (len);	
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

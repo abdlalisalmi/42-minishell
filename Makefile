@@ -1,15 +1,36 @@
-NAME = 		minishell.a
+NAME = 		minishell
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
-P_SRCS 	= 	parsing/main.c	\
-			parsing/utils/trim_spaces.c\
-			parsing/utils/ft_strdup.c\
-			parsing/utils/ft_strlen.c\
-			parsing/utils/ft_putstr_fd.c\
-			parsing/utils/verif_quotes.c\
-			parsing/utils/ft_split.c\
-			parsing/utils/ft_dplen.c\
-			parsing/utils/print_out.c\
-			parsing/utils/ft_strcmp.c\
+P_SRCS 	= 	parsing/srcs/main.c \
+			parsing/srcs/readline.c \
+			parsing/srcs/lexer.c \
+			parsing/srcs/parser.c \
+			parsing/srcs/put_error.c \
+			parsing/srcs/token.c \
+			parsing/srcs/collect_others.c \
+			parsing/srcs/lexer_utils.c \
+			parsing/srcs/collect_double_quotes.c \
+			parsing/srcs/collect_env.c \
+			parsing/srcs/parser_utils.c \
+			parsing/srcs/init_tree.c \
+			parsing/srcs/parser_single_command.c \
+			parsing/srcs/parser_pipeline.c \
+			parsing/srcs/to_print.c \
+			parsing/srcs/freeing.c \
+			parsing/srcs/parser_check_errors.c \
+			parsing/srcs/fill_execute_struct.c \
+			parsing/srcs/collect_env_inline.c \
+			parsing/srcs/libft/ft_strlen.c \
+			parsing/srcs/libft/ft_strdup.c \
+			parsing/srcs/libft/ft_substr.c \
+			parsing/srcs/libft/ft_strjoin.c \
+			parsing/srcs/libft/ft_strjoin_char.c \
+			parsing/srcs/libft/ft_num_words.c \
+			parsing/srcs/libft/ft_isalnum.c \
+			parsing/srcs/libft/ft_isalpha.c \
+			parsing/srcs/libft/ft_itoa.c \
+			parsing/srcs/libft/ft_realloc.c \
+			
 
 E_SRCS 	=	execution/start_execution.c \
 			execution/execution/execute_single_command.c \
@@ -33,6 +54,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/functions/ft_isdigit.c \
 			execution/functions/ft_strappend.c \
 			execution/functions/ft_split.c \
+			execution/functions/ft_itoa.c \
 			execution/builtins/ft_echo.c \
 			execution/builtins/ft_cd.c \
 			execution/builtins/ft_env.c \
@@ -40,6 +62,13 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/builtins/ft_export.c \
 			execution/builtins/ft_pwd.c \
 			execution/builtins/ft_unset.c \
+
+
+INCLUDES =	parsing/includes/main.h \
+			parsing/includes/tokenizer.h \
+			parsing/includes/lexer.h \
+			parsing/includes/parser.h \
+			parsing/includes/tree.h \
 
 READLINE_LIB_IMAC = -lreadline -L /Users/$(USER)/.brew/opt/readline/lib \
 			   -I /Users/$(USER)/.brew/opt/readline/include
@@ -52,28 +81,26 @@ READLINE_LIB_M_MAC = -lreadline -L /opt/homebrew/opt/readline/lib \
 
 			   
 
-FLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
-$(NAME): $(P_SRCS) $(E_SRCS)
+$(NAME): $(P_SRCS) $(E_SRCS) $(INCLUDES)
 	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) $(E_SRCS) -o minishell
 
 clean:
-			@rm -rf *.o execution/minishell.dSYM execution/minishell
+			@rm -rf *.o 
 
 fclean: 	clean
 			@rm -rf $(NAME)
+			@rm -rf execution/minishell.dSYM execution/$(NAME) parsing/minishell.dSYM parsing/$(NAME) minishell.dSYM
 
 re: 		fclean all
 
 
-parsing: $(P_SRCS)
-	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) -o parsing/minishell
+parse: 	$(P_SRCS) $(INCLUDES)
+		@ $(CC) $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) -o parsing/$(NAME)
 
 exec: 	$(E_SRCS)
-		@ $(CC) $(FLAGS) -c $(E_SRCS)
-		@ ar rc $(NAME) *.o
-		@ $(CC) $(FLAGS) execution/main.c $(NAME) -o execution/minishell -g3 -fsanitize=address
-		@rm -rf *.o execution/minishell.dSYM
-		@./execution/minishell
+		@ $(CC) $(FLAGS) execution/main.c $(E_SRCS) -o execution/$(NAME) -g3 -fsanitize=address
+		@rm -rf *.o execution/minishell.dSYM minishell.dSYM
+		@./execution/$(NAME)

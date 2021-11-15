@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/11 15:22:56 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:29:19 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 # include <errno.h>
 # include <limits.h>
 
-# define RIGHT			1
-# define DOUBLERIGHT	2
-# define LEFT			3
-# define HEREDOC		4
-# define NONE			5
-
-# define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
-
 
 typedef struct 	s_env 
 {
@@ -37,17 +29,17 @@ typedef struct 	s_env
 	char 		*value;
 }				t_env;
 
-typedef struct	s_redirect
+typedef struct	s_redirections
 {
 	int			type;
 	char		*file;
-}				t_redirect;
+}				t_redirections;
 
 typedef struct 			s_commands {
 	char 				**args;
 	int					n_args;
 
-	t_redirect			*redirect;
+	t_redirections		*redirect;
 	int 				n_redirect;
 
 	int					fd[2];
@@ -57,12 +49,11 @@ typedef struct s_all {
 	int			n_env;
 	t_env		*env;
 
+	int			exit_code;
+
 	int			n_commands;
 	t_commands 	*commands;
 
-
-	int			s_quote;
-	int			d_quote;
 }				t_all;
 
 t_all	g_all;

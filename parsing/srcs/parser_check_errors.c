@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   parser_check_errors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:19:58 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/11/12 18:11:35 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/12 18:13:23 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execution.h"
+#include "../includes/parser.h"
 
-char *ft_pwd(void)
+int	parser_check_errors(t_parser *parser)
 {
-	char pwd[4096];
-
-	if (!getcwd(pwd, 2048))
-		return (NULL);
-	g_all.exit_code = 0;
-	return (ft__strdup(pwd));
+	if (parser->cur_token->type == TK_PIPE
+		|| parser->cur_token->type == TK_EOF)
+		return (update_token(parser, TK_WORD));
+	return (0);
 }

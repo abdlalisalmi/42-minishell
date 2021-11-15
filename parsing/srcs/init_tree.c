@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   init_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 11:27:46 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 11:28:10 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/12 01:05:38 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/12 01:21:43 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../includes/parser.h"
 
-char	*ft_strdup(const char *str)
+t_tree		*init_tree(t_tree_type type)
 {
-	char			*ptr;
-	unsigned int	i;
+	t_tree	*tree;
 
-	i = 0;
-	while (str[i])
-		i++;
-	if (!(ptr = malloc(i + 1)))
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		ptr[i] = str[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	tree = (t_tree *)malloc(sizeof(t_tree));
+	if (tree == NULL)
+		put_error(errno);
+	tree->type = type;
+	tree->pipe_val = (void *)0;
+	tree->pipe_size = 0;
+	tree->args_val = (void *)0;
+	tree->args_size = 0;
+	tree->redir = (void *)0;
+	tree->redir_size = 0;
+
+	return (tree);
 }

@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_num_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 11:30:04 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 11:30:15 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/15 01:46:05 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/15 01:46:35 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/main.h"
 
-int			ft_strlen(char *s)
+int	ft_num_words(char const *s1)
 {
-	int i;
+	int	comp;
+	int	cles;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	comp = 0;
+	cles = 0;
+	if (*s1 == '\0')
+		return (0);
+	while (*s1 != '\0')
+	{
+		if (*s1 == ' ' || *s1 == '\t')
+			cles = 0;
+		else if (cles == 0)
+		{
+			cles = 1;
+			comp++;
+		}
+		s1++;
+	}
+	return (comp);
 }

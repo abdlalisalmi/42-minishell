@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 12:11:26 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/04 12:11:35 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 01:34:57 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 02:27:13 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/main.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strdup(const char *str)
 {
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int i;
+	char			*ptr;
+	unsigned int	i;
 
 	i = 0;
-	if (!s || !fd)
-		return ;
-	while (s[i])
+	while (str[i])
+		i++;
+	if (!(ptr = malloc(i + 1)))
+		return (NULL);
+	i = 0;
+	while (str[i])
 	{
-		ft_putchar_fd(s[i], fd);
+		ptr[i] = str[i];
 		i++;
 	}
+	ptr[i] = '\0';
+	return (ptr);
 }

@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 12:24:16 by atahiri           #+#    #+#             */
-/*   Updated: 2021/10/05 12:24:34 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/11 01:14:03 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 11:15:05 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../includes/parser.h"
 
-int	ft_strcmp(char *str1, char *str2)
+t_parser *init_parser_lexer(char *line)
 {
-	int	i;
+	t_parser *parser;
+	t_lexer *lexer;
 
-	i = 0;
-	if ((str1 == NULL && str2 != NULL) || (str2 == NULL && str1 != NULL))
-		return (0);
-	if (str1 == NULL && str2 == NULL)
-		return (1);
-	while (str1[i] == str2[i])
-	{
-		if (str1[i] == '\0' || str2[i] == '\0')
-			break ;
-		i++;
-	}
-	if (str1[i] == '\0' && str2[i] == '\0')
-		return (1);
-	return (0);
+	lexer = init_lexer(line);
+	parser = (t_parser *)malloc(sizeof(t_parser));
+	if (parser == NULL)
+		put_error(errno);
+	parser->lexer = lexer;
+	parser->cur_token = lexer_get_next_token(lexer);
+	parser->prev_token = NULL;
+	return (parser);
 }

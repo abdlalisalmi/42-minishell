@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   put_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:19:58 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/11/11 01:17:27 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 15:34:44 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execution.h"
+#include "../includes/main.h"
+#include "../includes/tokenizer.h"
 
-char *ft_pwd(void)
+void	put_error(int errnum)
 {
-	char pwd[4096];
+	char	*str;
 
-	if (!getcwd(pwd, 2048))
-		return (NULL);
-	g_all.exit_code = 0;
-	return (ft__strdup(pwd));
+	str = strerror(errnum);
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
+	exit(EXIT_FAILURE);
 }

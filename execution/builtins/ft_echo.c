@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:13:35 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/10 19:05:38 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:18:58 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void ft_echo(char **args, int n_args)
 	if (n_args == 1)
 	{
 		printf("\n");
-		set_env("?", "0");
+		g_all.exit_code = 0;
 		return;
 	}
 	remove_nl = 0;
@@ -57,5 +57,5 @@ void ft_echo(char **args, int n_args)
 				printf("\n");
 		i++;
 	}
-	set_env("?", "0");
+	g_all.exit_code = 0;
 }

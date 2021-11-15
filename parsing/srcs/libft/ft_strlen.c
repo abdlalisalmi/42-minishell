@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/03 17:27:40 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:47:56 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/11/11 01:18:30 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/11 02:27:09 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execution.h"
+#include "../../includes/main.h"
 
-char *get_env(char *name)
+int	ft_strlen(const char *s)
 {
-	int i;
+	int		i;
 
-	if (ft__strcmp(name, "?"))
-		return (ft__itoa(g_all.exit_code));
 	i = 0;
-	while (i < g_all.n_env)
-	{
-		if (ft__strcmp(name, g_all.env[i].name))
-			return (g_all.env[i].value);
+	while (s[i] != '\0')
 		i++;
-	}
-	return (NULL);
+	return (i);
 }
