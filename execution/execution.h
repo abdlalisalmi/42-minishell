@@ -62,6 +62,7 @@ int		ft_isdigit(int arg);
 char	*ft_strappend(char *s1, char *s2);
 char	**ft__split(const char *ss, char c);
 char	*ft__itoa(int n);
+char	*ft__substr(char const *s, unsigned int start, size_t len);
 
 
 #endif
