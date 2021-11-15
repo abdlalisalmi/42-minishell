@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_execute_struct.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:40:36 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/14 21:46:03 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/15 15:53:33 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,23 @@ void	fill_redirections(t_redirect *node, int cmd_index, int redire_index)
 {
 	g_all.commands[cmd_index].redirect[redire_index].type = node->type;
 	g_all.commands[cmd_index].redirect[redire_index].file = node->filename;
-	// printf("REDIRECTION(%s, %d)\n", node->filename, node->type);
 }
 
 void	fill_command(t_tree *node, int cmd_index)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	g_all.commands[cmd_index].n_redirect = node->redir_size;
 	g_all.commands[cmd_index].redirect = malloc(sizeof(t_redirections) * node->redir_size);
-	while (i < node->redir_size)
-	{
+	while (++i < node->redir_size)
 		fill_redirections(node->redir[i], cmd_index, i);
-		i++;
-	}
 
-	i = 0;
+	i = -1;
 	g_all.commands[cmd_index].n_args = node->args_size;
-	g_all.commands[cmd_index].args = malloc(sizeof(char *) * node->args_size + 1);
-	while (i < node->args_size)
-	{
+	g_all.commands[cmd_index].args = malloc(sizeof(char *) * (node->args_size + 1));
+	while (++i < node->args_size)
 		g_all.commands[cmd_index].args[i] =  node->args_val[i];
-		// printf("ARG %d === (%s)\n", i, node->args_val[i]);
-		i++;
-	}
 	g_all.commands[cmd_index].args[i] = NULL;
 }
 
@@ -49,14 +41,11 @@ void	fill_pipelines(t_tree *node)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	g_all.n_commands = node->pipe_size;
 	g_all.commands = malloc(sizeof(t_commands) * g_all.n_commands);
-	while (i < g_all.n_commands)
-	{
+	while (++i < g_all.n_commands)
 		fill_command(node->pipe_val[i], i);
-		i++;
-	}
 }
 
 int		fill_execute_struct(t_tree *node)
