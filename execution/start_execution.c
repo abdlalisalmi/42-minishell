@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/15 16:01:23 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 22:05:18 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void free_execution_struct(void)
 				free(g_all.commands[i].redirect[r].file);
 			free(g_all.commands[i].redirect);
 		}
-		free(g_all.commands);
 	}
+	free(g_all.commands);
 }
 
 void start_execution(void)

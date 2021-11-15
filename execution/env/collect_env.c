@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:27:38 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/15 16:56:49 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:55:28 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void collect_env(char **env)
 	g_all.env = malloc(sizeof(t_env) * 2048);
 	i = 0;
 	g_all.n_env = 0;
-	while (*env++ != '\0')
+	while (*env++ != NULL)
 	{
 		if (*env != NULL)
 		{
