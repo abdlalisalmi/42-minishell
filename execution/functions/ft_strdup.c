@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 20:51:10 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:39:20 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:37:40 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft__strdup(const char *str)
 	char			*ptr;
 	unsigned int	i;
 
+	if (str == NULL)
+		return (NULL);
 	i = 0;
 	while (str[i])
 		i++;
