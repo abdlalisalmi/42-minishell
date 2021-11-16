@@ -6,14 +6,14 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:58:16 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/13 17:58:39 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/16 13:38:24 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./main.h"
-
 #ifndef TREE_H
-#define TREE_H
+# define TREE_H
+
+# include "./main.h"
 
 typedef enum e_red_type
 {
@@ -49,5 +49,3 @@ typedef struct s_tree
 int	check_cmd_line(char **line);
 
 #endif
-
-

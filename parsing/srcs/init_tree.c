@@ -6,13 +6,13 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 01:05:38 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/12 01:21:43 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/16 14:09:22 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
-t_tree		*init_tree(t_tree_type type)
+t_tree	*init_tree(t_tree_type type)
 {
 	t_tree	*tree;
 
@@ -26,6 +26,5 @@ t_tree		*init_tree(t_tree_type type)
 	tree->args_size = 0;
 	tree->redir = (void *)0;
 	tree->redir_size = 0;
-
 	return (tree);
 }
