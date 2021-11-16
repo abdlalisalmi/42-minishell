@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 00:50:45 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/16 00:23:53 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/16 13:03:22 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	update_token(t_parser *parser, t_token_type type)
 		parser->cur_token = lexer_get_next_token(parser->lexer);
 		return (0);
 	}
-	write(2, "bash: syntax error near unexpected token `", 42);
+	write(2, "MINISHELL: syntax error near unexpected token `", 48);
 	write(2, parser->cur_token->value, ft_strlen(parser->cur_token->value));
 	write(2, "'\n", 2);
 	return (1);
