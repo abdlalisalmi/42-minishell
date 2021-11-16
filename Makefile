@@ -20,6 +20,7 @@ P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/parser_check_errors.c \
 			parsing/srcs/fill_execute_struct.c \
 			parsing/srcs/collect_env_inline.c \
+			parsing/srcs/signals.c \
 			parsing/srcs/libft/ft_strlen.c \
 			parsing/srcs/libft/ft_strdup.c \
 			parsing/srcs/libft/ft_substr.c \
