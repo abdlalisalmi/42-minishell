@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:54:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/16 00:27:32 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/16 13:52:00 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,9 @@ int main(int argc, char **argv, char **envp)
 		{
 			fill_execute_struct(tree);
 			start_execution();
-		} else {
-			g_all.exit_code = 258;
 		}
-		
-		// system("leaks minishell");
-		// free_execute_struct(tree);
-
-		// to_print(tree);
-		
+		else
+			g_all.exit_code = 258;
 	}
 	return (0);
 }
