@@ -1,5 +1,5 @@
 NAME = 		minishell
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/readline.c \
@@ -45,6 +45,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/env/get_env.c \
 			execution/env/set_env.c \
 			execution/env/to_envp.c \
+			execution/env/sort_env.c \
 			execution/functions/ft_strlen.c \
 			execution/functions/ft_putstr_fd.c \
 			execution/functions/ft_memcopy.c \
@@ -56,6 +57,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/functions/ft_split.c \
 			execution/functions/ft_itoa.c \
 			execution/functions/ft_substr.c \
+			execution/functions/ft_strcompare.c \
 			execution/builtins/ft_echo.c \
 			execution/builtins/ft_cd.c \
 			execution/builtins/ft_env.c \
@@ -86,7 +88,7 @@ READLINE_LIB_M_MAC = -lreadline -L /opt/homebrew/opt/readline/lib \
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS) $(INCLUDES)
-	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) $(E_SRCS) -o minishell -g3 -fsanitize=address
+	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) $(E_SRCS) -o minishell 
 
 clean:
 			@rm -rf *.o 
