@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/26 18:07:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 00:42:55 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/11/15 23:19:25 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/11/15 23:32:28 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-void ft_env(char **args, int n_args)
+char	*ft__substr(char const *s, unsigned int start, size_t len)
 {
-	int i;
+	char	*sub;
+	size_t	i;
 
-	if (n_args > 1)
+	if (!s || !(sub = malloc(len + 1)))
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0' && i < len && (int)start < ft__strlen((char*)s))
 	{
-		write(2, "env: ", 5);
-		write(2, args[1], ft__strlen(args[1]));
-		write(2, ": No such file or directory\n", 28);
-		g_all.exit_code = 127;
+		sub[i] = s[start];
+		start++;
+		i++;
 	}
-	else
-	{
-		i = -1;
-		while (++i < g_all.n_env)
-			if (g_all.env[i].name && g_all.env[i].value)
-				printf("%s=%s\n", g_all.env[i].name, g_all.env[i].value);
-		g_all.exit_code = 0;
-	}
+	sub[i] = '\0';
+	return (sub);
 }

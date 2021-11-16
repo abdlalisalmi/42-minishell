@@ -55,6 +55,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/functions/ft_strappend.c \
 			execution/functions/ft_split.c \
 			execution/functions/ft_itoa.c \
+			execution/functions/ft_substr.c \
 			execution/builtins/ft_echo.c \
 			execution/builtins/ft_cd.c \
 			execution/builtins/ft_env.c \

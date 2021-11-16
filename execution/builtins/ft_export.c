@@ -6,40 +6,78 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:39:09 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:19:51 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:41:07 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-char *get_env_name(char *str)
+// char *get_env_name(char *str)
+// {
+// 	int i;
+// 	char *name;
+
+// 	i = -1;
+// 	while (str[++i] != '=')
+// 	name = malloc(sizeof(char) * i);
+// 	i = -1;
+// 	while (str[++i] != '=')
+// 		name[i] = str[i];
+// 	return (name);
+// }
+
+// char *get_env_value(char *str)
+// {
+// 	int i;
+// 	int j;
+// 	char *value;
+
+// 	i = -1;
+// 	while (str[++i] != '=')
+// 	value = malloc(sizeof(char) * ft__strlen(str) - i);
+// 	j = 0;
+// 	while (str[++i])
+// 		value[j++] = str[i];
+// 	value[j] = '\0';
+// 	return (value);
+// }
+
+static int equal_index(char *env)
 {
 	int i;
-	char *name;
 
 	i = -1;
-	while (str[++i] != '=')
-	name = malloc(sizeof(char) * i);
-	i = -1;
-	while (str[++i] != '=')
-		name[i] = str[i];
-	return (name);
+	while (env[++i] != '\0')
+		if (env[i] == '=')
+			return (i);
+	return (-1);
 }
 
-char *get_env_value(char *str)
+static void handle_env(char *env)
 {
-	int i;
-	int j;
+	char *key;
 	char *value;
+	int eq_index;
+	int env_len;
 
-	i = -1;
-	while (str[++i] != '=')
-	value = malloc(sizeof(char) * ft__strlen(str) - i);
-	j = 0;
-	while (str[++i])
-		value[j++] = str[i];
-	value[j] = '\0';
-	return (value);
+	eq_index = equal_index(env);
+	env_len = ft__strlen(env);
+	if (eq_index != -1)
+	{
+		key = ft__substr(env, 0, eq_index);
+		if (eq_index != env_len)
+			value = ft__substr(env, eq_index + 1, env_len - eq_index);
+		else
+			value = ft__strdup("");
+	}
+	else
+	{
+		key = ft__strdup(env);
+		value = NULL;
+	}
+	set_env(key, value);
+	free(key);
+	free(value);
 }
 
 void	print_env(void)
@@ -48,8 +86,10 @@ void	print_env(void)
 
 	while (++i < g_all.n_env)
 	{
-		if (g_all.env[i].name && !ft__strcmp(g_all.env[i].name, "?"))
+		if (g_all.env[i].name && g_all.env[i].value)
 			printf("declare -x %s=\"%s\"\n", g_all.env[i].name, g_all.env[i].value);
+		else
+			printf("declare -x %s\n", g_all.env[i].name);
 	}
 	g_all.exit_code = 0;
 }
@@ -62,7 +102,7 @@ int ft_export(char **args, int n_args)
 		print_env();
 	else
 	{
-		i = 0;
+		i = 1;
 		while (i < n_args)
 		{
 			if (ft_isdigit(args[i][0]))
@@ -73,11 +113,7 @@ int ft_export(char **args, int n_args)
 				g_all.exit_code = 1;
 			}
 			else
-				if (ft_strchr(args[i], '='))
-				{
-					set_env(get_env_name(args[i]), get_env_value(args[i]));
-					g_all.exit_code = 0;
-				}
+				handle_env(args[i]);
 			i++;
 		}
 	}
