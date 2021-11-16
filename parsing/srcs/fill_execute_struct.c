@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_execute_struct.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:40:36 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/15 15:53:33 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:08:37 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ void	fill_command(t_tree *node, int cmd_index)
 
 	i = -1;
 	g_all.commands[cmd_index].n_redirect = node->redir_size;
-	g_all.commands[cmd_index].redirect = malloc(sizeof(t_redirections) * node->redir_size);
+	g_all.commands[cmd_index].redirect = malloc(sizeof(t_redirections)
+			* node->redir_size);
 	while (++i < node->redir_size)
 		fill_redirections(node->redir[i], cmd_index, i);
-
 	i = -1;
 	g_all.commands[cmd_index].n_args = node->args_size;
-	g_all.commands[cmd_index].args = malloc(sizeof(char *) * (node->args_size + 1));
+	g_all.commands[cmd_index].args = malloc(sizeof(char *)
+			* (node->args_size + 1));
 	while (++i < node->args_size)
-		g_all.commands[cmd_index].args[i] =  node->args_val[i];
+		g_all.commands[cmd_index].args[i] = node->args_val[i];
 	g_all.commands[cmd_index].args[i] = NULL;
 }
 
@@ -48,7 +49,7 @@ void	fill_pipelines(t_tree *node)
 		fill_command(node->pipe_val[i], i);
 }
 
-int		fill_execute_struct(t_tree *node)
+int	fill_execute_struct(t_tree *node)
 {
 	if (node != NULL)
 		fill_pipelines(node);

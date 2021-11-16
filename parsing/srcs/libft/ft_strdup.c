@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 01:34:57 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/11 02:27:13 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/16 14:00:49 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strdup(const char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	if (!(ptr = malloc(i + 1)))
+	ptr = malloc(i + 1);
+	if (!ptr)
 		return (NULL);
 	i = 0;
 	while (str[i])

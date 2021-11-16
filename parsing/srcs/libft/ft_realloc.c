@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 01:42:59 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/12 01:46:45 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/16 13:39:34 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	*ft_realloc(void *old_alloc, size_t old_size, size_t new_size)
 	free(old_alloc);
 	return (new_alloc);
 }
-
 
 void	*realloc_edited(void *old_alloc, size_t count, size_t old_size)
 {

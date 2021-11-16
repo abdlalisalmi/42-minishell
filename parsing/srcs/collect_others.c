@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:39:41 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/15 01:38:41 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/16 14:05:20 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_closed_quotes(char *str, int index, char c)
 	return (0);
 }
 
-char		*collect_single_quotes(t_lexer *lexer)
+char	*collect_single_quotes(t_lexer *lexer)
 {
 	char	*str;
 	int		i;
@@ -46,7 +46,7 @@ char		*collect_single_quotes(t_lexer *lexer)
 	return (str);
 }
 
-char		*collect_simple_chars(t_lexer *lexer)
+char	*collect_simple_chars(t_lexer *lexer)
 {
 	char	*str;
 	int		i;
@@ -63,7 +63,6 @@ char		*collect_simple_chars(t_lexer *lexer)
 	return (str);
 }
 
-
 void	add_to_value(char **value, char *str)
 {
 	char	*fr;
@@ -76,9 +75,8 @@ void	add_to_value(char **value, char *str)
 	free(str);
 }
 
-t_token		*collect_others(t_lexer *lexer)
+t_token	*collect_others(t_lexer *lexer)
 {
-	// need tp handle env variabls
 	char	*value;
 	char	*str;
 
