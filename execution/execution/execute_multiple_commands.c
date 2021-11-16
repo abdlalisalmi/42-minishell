@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 15:07:29 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/16 13:39:48 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void execute_child_command(int index, char** envp)
             return;
     
         if (is_builtins(g_all.commands[index].args[0]))
+        {
             exec_builtins(g_all.commands[index].args, g_all.commands[index].n_args);
+            exit(g_all.exit_code);
+        }
         else
             exec_sys_command(index, envp);
 	}
@@ -59,9 +62,11 @@ void execute_child_command(int index, char** envp)
 	{
         close_pipes(index);
 		waitpid(pid, &status, 0);
+        printf("status : %d\n", status);
         if (status != 0)
 			g_all.exit_code = 1;
-		g_all.exit_code = 0;
+        else
+		    g_all.exit_code = 0;
 	}
 }
 
