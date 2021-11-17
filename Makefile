@@ -40,6 +40,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/execution/exec_builtins.c \
 			execution/execution/setup_pipes.c \
 			execution/execution/setup_redirections.c \
+			execution/execution/setup_heredoc.c \
 			execution/utils/free_d_pointer.c \
 			execution/utils/get_cmd_path.c \
 			execution/env/collect_env.c \
@@ -48,6 +49,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/env/to_envp.c \
 			execution/env/sort_env.c \
 			execution/functions/ft_strlen.c \
+			execution/functions/ft_strjoin.c \
 			execution/functions/ft_putstr_fd.c \
 			execution/functions/ft_memcopy.c \
 			execution/functions/ft_strcmp.c \

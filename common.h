@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:59:13 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/16 15:52:57 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/17 14:54:03 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_all {
 
 	int			n_commands;
 	t_commands 	*commands;
+
+	int 		heredoc;
 
 }				t_all;
 

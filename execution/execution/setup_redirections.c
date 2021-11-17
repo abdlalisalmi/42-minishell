@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:59:55 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/15 21:53:36 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/17 15:04:09 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int setup_redirections(t_commands command)
 			dup2(fd, 1);
 			close(fd);
 		}
-		else if (command.redirect[i].type == LEFT)
+		else if (command.redirect[i].type == LEFT || command.redirect[i].type == HEREDOC)
 		{
 			fd = open(command.redirect[i].file, O_RDONLY, PERMISSION);
 			if (fd == -1)

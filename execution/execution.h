@@ -2,6 +2,8 @@
 # define EXECUTION_H
 
 # include "../common.h"
+# include <readline/readline.h>
+# include <readline/history.h>
 
 # define LEFT			0
 # define RIGHT			1
@@ -13,6 +15,9 @@
 # define FILE_D_OUT 1
 # define PIPE_IN 1
 # define PIPE_OUT 0
+
+# define True 1
+# define False 0
 
 # define PERMISSION S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH
 
@@ -35,6 +40,8 @@ void 	ft_echo(char **args, int n_args);
 void    init_pipes(int index);
 void    close_pipes(int index);
 int     setup_redirections(t_commands command);
+void    setup_heredoc(void);
+void    remove_heredoc_files(void);
 void    save_std_fds(int *stdin, int *stdout);
 void    restore_std_fds(int type, int stdin, int stdout);
 int     is_builtins(char *cmd);
@@ -64,6 +71,7 @@ char	**ft__split(const char *ss, char c);
 char	*ft__itoa(int n);
 char	*ft__substr(char const *s, unsigned int start, size_t len);
 int     ft_strcompare(char *str1, char *str2);
+char	*ft__strjoin(char *s1, char *s2);
 
 
 #endif

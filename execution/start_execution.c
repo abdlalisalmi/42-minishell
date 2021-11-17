@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 15:40:43 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/17 15:19:30 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,15 @@ void free_execution_struct(void)
 
 void start_execution(void)
 {
+	if (g_all.commands[0].args[0][0] == '\0')
+		return;
 	handle_under_env();
+	setup_heredoc();
     if (g_all.n_commands == 1)
 		execute_single_command(g_all.commands[0]);
 	else if (g_all.n_commands > 1)
 		execute_multiple_commands();
+	if (g_all.heredoc == True)
+		remove_heredoc_files();
 	free_execution_struct();
 }
