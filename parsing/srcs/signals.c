@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:25:29 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/17 14:21:02 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/17 19:02:30 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,11 @@ void sig_handler(int sig)
 		write(2, buffer, ft_strlen(buffer));
 		write(2, "  \b\b\nMINISHELL$ ", 16);
 		free(buffer);
+	}
+	if (sig == SIGQUIT)
+	{
+		rl_on_new_line();
+		rl_redisplay();
+		write(2, "  \b\b", 4);
 	}
 }

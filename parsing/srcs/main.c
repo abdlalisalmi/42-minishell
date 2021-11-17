@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:54:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/17 15:49:22 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/17 19:02:32 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	collect_env(envp);
 	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
 	while (1)
 	{
 		if (check_cmd_line(&cmd_line) == 0)
