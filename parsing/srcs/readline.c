@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 01:03:08 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/16 13:50:44 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/17 14:19:29 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 int check_cmd_line(char **line)
 {
 	*line = readline("MINISHELL$ ");
+	if (*line == NULL)
+	{
+		write(2, "\033MMINISHELL$ exit\n", 18);
+		exit(0);
+	}
 	if (line[0][0] == '\0')
 	{
 		free(*line);
