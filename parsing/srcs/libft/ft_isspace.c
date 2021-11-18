@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readline.c                                         :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 01:03:08 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/18 23:29:56 by atahiri          ###   ########.fr       */
+/*   Created: 2021/11/18 23:27:51 by atahiri           #+#    #+#             */
+/*   Updated: 2021/11/18 23:38:56 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parser.h"
+#include "../../includes/main.h"
 
-int check_cmd_line(char **line)
+int		ft_isspace(char *str)
 {
-	*line = readline("MINISHELL$ ");
-	if (*line == NULL)
+	int i;
+	int nb;
+
+	i = -1;
+	nb = 0;
+	while (++i < ft_strlen(str))
 	{
-		write(2, "\033MMINISHELL$ exit\n", 18);
-		exit(0);
+		if (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+			|| str[i] == '\f' || str[i] == '\r'
+			|| str[i] == ' ')
+			nb++;
 	}
-	if (ft_isspace(*line))
-	{
-		free(*line);
-		return (0);
-	}
-	if (line[0][0] == '\0')
-	{
-		free(*line);
-		return (0);
-	}
-	return (1);
+	if (nb == ft_strlen(str))
+		return (1);
+	return (0);
 }

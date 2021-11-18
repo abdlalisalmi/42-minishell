@@ -43,6 +43,7 @@ P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/libft/ft_strdup.c \
 			parsing/srcs/libft/ft_substr.c \
 			parsing/srcs/libft/ft_strjoin.c \
+			parsing/srcs/libft/ft_isspace.c \
 			parsing/srcs/libft/ft_strjoin_char.c \
 			parsing/srcs/libft/ft_num_words.c \
 			parsing/srcs/libft/ft_isalnum.c \
