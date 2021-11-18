@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:39:01 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/16 14:03:41 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/17 16:08:32 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*collect_env_variables(t_lexer *lexer)
 	fr = str;
 	str = get_env(str);
 	if (str == NULL)
-		str = ft_strdup("");
+		str = ft_strdup(" ");
 	else
 		str = ft_strdup(str);
 	free(fr);

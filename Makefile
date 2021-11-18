@@ -1,5 +1,23 @@
 NAME = 		minishell
+
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+
+INCLUDES =	common.h \
+			execution/execution.h \
+			parsing/includes/main.h \
+			parsing/includes/tokenizer.h \
+			parsing/includes/lexer.h \
+			parsing/includes/parser.h \
+			parsing/includes/tree.h \
+
+READLINE_LIB_IMAC = -lreadline -L /Users/$(USER)/.brew/opt/readline/lib \
+			   -I /Users/$(USER)/.brew/opt/readline/include
+
+READLINE_LIB_MAC = -lreadline -L /usr/local/opt/readline/lib \
+			   -I /usr/local/opt/readline/include
+
+READLINE_LIB_M_MAC = -lreadline -L /opt/homebrew/opt/readline/lib \
+			   -I /opt/homebrew/opt/readline/include
 
 P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/readline.c \
@@ -32,7 +50,6 @@ P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/libft/ft_itoa.c \
 			parsing/srcs/libft/ft_realloc.c \
 			
-
 E_SRCS 	=	execution/start_execution.c \
 			execution/execution/execute_single_command.c \
 			execution/execution/execute_multiple_commands.c \
@@ -40,6 +57,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/execution/exec_builtins.c \
 			execution/execution/setup_pipes.c \
 			execution/execution/setup_redirections.c \
+			execution/execution/setup_heredoc.c \
 			execution/utils/free_d_pointer.c \
 			execution/utils/get_cmd_path.c \
 			execution/env/collect_env.c \
@@ -48,6 +66,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/env/to_envp.c \
 			execution/env/sort_env.c \
 			execution/functions/ft_strlen.c \
+			execution/functions/ft_strjoin.c \
 			execution/functions/ft_putstr_fd.c \
 			execution/functions/ft_memcopy.c \
 			execution/functions/ft_strcmp.c \
@@ -67,25 +86,6 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/builtins/ft_pwd.c \
 			execution/builtins/ft_unset.c \
 
-
-INCLUDES =	parsing/includes/main.h \
-			parsing/includes/tokenizer.h \
-			parsing/includes/lexer.h \
-			parsing/includes/parser.h \
-			parsing/includes/tree.h \
-
-READLINE_LIB_IMAC = -lreadline -L /Users/$(USER)/.brew/opt/readline/lib \
-			   -I /Users/$(USER)/.brew/opt/readline/include
-
-READLINE_LIB_MAC = -lreadline -L /usr/local/opt/readline/lib \
-			   -I /usr/local/opt/readline/include
-
-READLINE_LIB_M_MAC = -lreadline -L /opt/homebrew/opt/readline/lib \
-			   -I /opt/homebrew/opt/readline/include
-
-			   
-
-
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS) $(INCLUDES)
@@ -95,16 +95,8 @@ clean:
 			@rm -rf *.o 
 
 fclean: 	clean
-			@rm -rf $(NAME)
-			@rm -rf execution/minishell.dSYM execution/$(NAME) parsing/minishell.dSYM parsing/$(NAME) minishell.dSYM
+			@rm -rf $(NAME) $(NAME).dSYM $(NAME).a
+			@rm -rf execution/$(NAME) execution/$(NAME).dSYM
+			@rm -rf parsing/$(NAME).dSYM parsing/$(NAME) 
 
 re: 		fclean all
-
-
-parse: 	$(P_SRCS) $(INCLUDES)
-		@ $(CC) $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) -o parsing/$(NAME)
-
-exec: 	$(E_SRCS)
-		@ $(CC) $(FLAGS) execution/main.c $(E_SRCS) -o execution/$(NAME) -g3 -fsanitize=address
-		@rm -rf *.o execution/minishell.dSYM minishell.dSYM
-		@./execution/$(NAME)

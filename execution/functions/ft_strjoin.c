@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_env.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/03 17:27:42 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/18 14:18:08 by aes-salm         ###   ########.fr       */
+/*   Created: 2021/11/17 14:39:29 by aes-salm          #+#    #+#             */
+/*   Updated: 2021/11/17 14:46:42 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-int	set_env(char *name, char *value)
+char	*ft__strjoin(char *s1, char *s2)
 {
-	int	i;
+	char			*new_str;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	s1_len;
+	unsigned int	s2_len;
 
+	if (!s1 || !s2)
+		return (NULL);
+	s1_len = ft__strlen(s1);
+	s2_len = ft__strlen(s2);
+	if (!(new_str = malloc(s1_len + s2_len + 1)))
+		return (NULL);
 	i = 0;
-	while (i < g_all.n_env)
+	j = 0;
+	while (i < s1_len)
 	{
-		if (ft__strcmp(name, g_all.env[i].name))
-		{
-			g_all.env[i].value = ft__strdup(value);
-			return (1);
-		}
+		new_str[i] = s1[i];
 		i++;
 	}
-	g_all.env[g_all.n_env].name = ft__strdup(name);
-	g_all.env[g_all.n_env].value = ft__strdup(value);
-	g_all.n_env++;
-	return (1);
+	while (j < s2_len)
+		new_str[i++] = s2[j++];
+	new_str[i] = '\0';
+	return (new_str);
 }

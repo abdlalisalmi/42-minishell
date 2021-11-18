@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:20:44 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/15 14:11:01 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:13:30 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static long long	get_exit_code(const char *str)
 		return (code);
 }
 
-void ft_exit(char **args, int n_args)
+void	ft_exit(char **args, int n_args)
 {
-	unsigned long code;
+	unsigned long	code;
 
 	if (n_args == 1)
 		exit(EXIT_SUCCESS);

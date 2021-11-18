@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 14:12:13 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/17 15:56:23 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,47 +34,48 @@ void    exec_sys_command(int index, char **envp)
     }
 }
 
-void execute_child_command(int index, char** envp)
+int execute_child_command(int index, char** envp)
 {
 	pid_t pid;
-	int status;
 
     pipe(g_all.commands[index].fd);
-
     pid = fork();
 	if (pid < 0)
 		ft__putstr_fd("Failed forking child..\n", 2);
 	else if (pid == 0)
 	{
 		init_pipes(index);
-
         if (setup_redirections(g_all.commands[index]))
-            return;
-    
-        if (is_builtins(g_all.commands[index].args[0]))
+            return (pid);
+        if (g_all.commands[index].n_args > 0)
         {
-            exec_builtins(g_all.commands[index].args, g_all.commands[index].n_args);
-            exit(g_all.exit_code);
+            if (is_builtins(g_all.commands[index].args[0]))
+                exec_builtins(g_all.commands[index].args, g_all.commands[index].n_args);
+            else
+                exec_sys_command(index, envp);
         }
-        else
-            exec_sys_command(index, envp);
+        exit(g_all.exit_code);
 	}
-	else
-	{
-        close_pipes(index);
-		waitpid(pid, &status, 0);
-		g_all.exit_code = status / 256;
-	}
+    close_pipes(index);
+    return (pid);
 }
 
 void execute_multiple_commands()
 {
 	char **envp;
+    int status;
+    int pids[2048];
     int i;
 
     envp = to_envp();
     i = -1;
     while (++i < g_all.n_commands)
-        execute_child_command(i, envp);
+        pids[i] = execute_child_command(i, envp);
+    i = -1;
+    while (++i < g_all.n_commands)
+    {
+        waitpid(pids[i], &status, 0);
+		g_all.exit_code = WEXITSTATUS(status);
+    }
     free_d_pointer(envp);
 }

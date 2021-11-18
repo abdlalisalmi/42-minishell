@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:07:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 00:42:55 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:12:57 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-void ft_env(char **args, int n_args)
+void	ft_env(char **args, int n_args)
 {
-	int i;
+	int	i;
 
 	if (n_args > 1)
 	{

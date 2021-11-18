@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:07:23 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:19:58 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:15:02 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-char *ft_pwd(void)
+char	*ft_pwd(void)
 {
-	char pwd[4096];
+	char	pwd[4096];
 
 	if (!getcwd(pwd, 2048))
 		return (NULL);

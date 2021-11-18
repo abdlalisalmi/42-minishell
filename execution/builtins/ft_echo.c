@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:13:35 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:18:58 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:12:33 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-int remove_new_line_check(char *arg)
+int	remove_new_line_check(char *arg)
 {
-	int i;
+	int	i;
 
 	if (arg[0] == '-' && arg[1] == '-')
 		return (0);
@@ -31,16 +31,16 @@ int remove_new_line_check(char *arg)
 	return (0);
 }
 
-void ft_echo(char **args, int n_args)
+void	ft_echo(char **args, int n_args)
 {
-	int i;
-	int remove_nl;
+	int	i;
+	int	remove_nl;
 
 	if (n_args == 1)
 	{
 		printf("\n");
 		g_all.exit_code = 0;
-		return;
+		return ;
 	}
 	remove_nl = 0;
 	i = 0;
