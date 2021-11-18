@@ -1,5 +1,5 @@
 NAME = 		minishell
-FLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/readline.c \
@@ -89,7 +89,7 @@ READLINE_LIB_M_MAC = -lreadline -L /opt/homebrew/opt/readline/lib \
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS) $(INCLUDES)
-	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) $(E_SRCS) -o minishell 
+	@gcc $(FLAGS) $(READLINE_LIB_MAC) $(P_SRCS) $(E_SRCS) -o minishell 
 
 clean:
 			@rm -rf *.o 
