@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:27:38 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 00:30:14 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:17:37 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-int equal_index(char *env)
+int	equal_index(char *env)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (env[++i] != '\0')
@@ -23,12 +23,12 @@ int equal_index(char *env)
 	return (-1);
 }
 
-void handle_env(char *env, int env_index)
+void	handle_env(char *env, int env_index)
 {
-	char *key;
-	char *value;
-	int eq_index;
-	int env_len;
+	char	*key;
+	char	*value;
+	int		eq_index;
+	int		env_len;
 
 	eq_index = equal_index(env);
 	env_len = ft__strlen(env);
@@ -43,9 +43,9 @@ void handle_env(char *env, int env_index)
 	free(value);
 }
 
-void collect_env(char **env)
+void	collect_env(char **env)
 {
-	int i;
+	int	i;
 
 	g_all.env = malloc(sizeof(t_env) * 2048);
 	i = -1;

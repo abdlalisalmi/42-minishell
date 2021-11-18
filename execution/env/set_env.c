@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:27:42 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:39:20 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:18:08 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	set_env(char *name, char *value)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < g_all.n_env)

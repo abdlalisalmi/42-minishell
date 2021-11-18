@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:27:40 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:47:56 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:17:49 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-char *get_env(char *name)
+char	*get_env(char *name)
 {
-	int i;
+	int	i;
 
 	if (ft__strcmp(name, "?"))
 		return (ft__itoa(g_all.exit_code));
