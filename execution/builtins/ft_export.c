@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:39:09 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 15:53:59 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:14:48 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-static int equal_index(char *env)
+static int	equal_index(char *env)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (env[++i] != '\0')
@@ -23,12 +23,12 @@ static int equal_index(char *env)
 	return (-1);
 }
 
-static void handle_env(char *env)
+static void	handle_env(char *env)
 {
-	char *key;
-	char *value;
-	int eq_index;
-	int env_len;
+	char	*key;
+	char	*value;
+	int		eq_index;
+	int		env_len;
 
 	eq_index = equal_index(env);
 	env_len = ft__strlen(env);
@@ -52,23 +52,24 @@ static void handle_env(char *env)
 
 static void	print_env(void)
 {
-	int i;
+	int	i;
 
 	sort_env();
 	i = -1;
 	while (++i < g_all.n_env)
 	{
 		if (g_all.env[i].name && g_all.env[i].value)
-			printf("declare -x %s=\"%s\"\n", g_all.env[i].name, g_all.env[i].value);
+			printf("declare -x %s=\"%s\"\n", g_all.env[i].name,
+				g_all.env[i].value);
 		else
 			printf("declare -x %s\n", g_all.env[i].name);
 	}
 	g_all.exit_code = 0;
 }
 
-int ft_export(char **args, int n_args)
+int	ft_export(char **args, int n_args)
 {
-	int i;
+	int	i;
 
 	if (n_args == 1)
 		print_env();

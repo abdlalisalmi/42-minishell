@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:03:15 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/12 14:26:54 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:15:42 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	update_env(char *name)
 {
-	int i;
-	int index;
-	
+	int	i;
+	int	index;
+
 	i = -1;
 	index = 0;
 	while (++i < g_all.n_env)
@@ -37,7 +37,7 @@ void	update_env(char *name)
 
 void	ft_unset(char **args, int n_args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (++i < n_args && args[i])
