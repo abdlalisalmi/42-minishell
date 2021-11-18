@@ -6,13 +6,13 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/17 16:05:33 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:08:08 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void handle_under_env(void)
+void	handle_under_env(void)
 {
 	int l_cmd;
 	int l_args;
@@ -29,7 +29,7 @@ void handle_under_env(void)
 	}
 }
 
-void free_execution_struct(void)
+void	free_execution_struct(void)
 {
 	int i;
 	int r;
@@ -50,7 +50,7 @@ void free_execution_struct(void)
 	free(g_all.commands);
 }
 
-void start_execution(void)
+void	start_execution(void)
 {
 	if (g_all.commands[0].n_args > 0 && g_all.commands[0].args[0][0] == '\0')
 		return;
