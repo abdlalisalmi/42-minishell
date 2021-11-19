@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 17:57:16 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:17:11 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ void	exec_sys_command(int index, char **envp)
 	}
 }
 
-int	execute_child_command(int index, char **envp)
+int	execute_child_command(int index)
 {
 	pid_t	pid;
+	char	**envp;
 
 	pipe(g_all.commands[index].fd);
 	pid = fork();
@@ -45,6 +46,7 @@ int	execute_child_command(int index, char **envp)
 		ft__putstr_fd("Failed forking child..\n", 2);
 	else if (pid == 0)
 	{
+		envp = to_envp();
 		init_pipes(index);
 		if (setup_redirections(g_all.commands[index]))
 			return (pid);
@@ -64,15 +66,13 @@ int	execute_child_command(int index, char **envp)
 
 void	execute_multiple_commands(void)
 {
-	char	**envp;
 	int		status;
 	int		pids[2048];
 	int		i;
 
-	envp = to_envp();
 	i = -1;
 	while (++i < g_all.n_commands)
-		pids[i] = execute_child_command(i, envp);
+		pids[i] = execute_child_command(i);
 	i = -1;
 	while (++i < g_all.n_commands)
 	{
@@ -88,5 +88,4 @@ void	execute_multiple_commands(void)
 			g_all.exit_code = WEXITSTATUS(status);
 	}
 	g_all.is_child = FALSE;
-	free_d_pointer(envp);
 }

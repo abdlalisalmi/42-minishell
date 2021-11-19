@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 19:34:00 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/19 19:51:47 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	handle_under_env(void)
 {
-	int	l_cmd;
-	int	l_args;
+	int		l_cmd;
+	int		l_args;
+	char	*args;
 
 	l_cmd = g_all.n_commands - 1;
 	l_args = g_all.commands[l_cmd].n_args - 1;
@@ -23,7 +24,11 @@ void	handle_under_env(void)
 	{
 		if (g_all.commands[l_cmd].n_args == 1
 			&& ft__strcmp(g_all.commands[l_cmd].args[l_args], "env"))
-			set_env("_", get_cmd_path(g_all.commands[l_cmd].args[l_args]));
+		{
+			args = get_cmd_path(g_all.commands[l_cmd].args[l_args]);
+			set_env("_", args);
+			free(args);
+		}
 		else
 			set_env("_", g_all.commands[l_cmd].args[l_args]);
 	}

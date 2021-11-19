@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:04:25 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 11:42:42 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:56:17 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*search_for_path(char *cmd, char *path)
 
 	command = ft_strappend("/", cmd);
 	full_path = ft_strappend(path, command);
-	fd = open(full_path, O_RDONLY);
 	free(command);
+	fd = open(full_path, O_RDONLY);
 	if (fd > -1)
 	{
 		close(fd);
