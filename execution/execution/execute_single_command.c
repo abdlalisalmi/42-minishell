@@ -6,17 +6,17 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 17:10:59 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:43:07 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-void exec_system_cmd(char *cmd_path, char **args)
+void	exec_system_cmd(char *cmd_path, char **args)
 {
-	pid_t pid;
-	int status;
-	char **envp;
+	pid_t	pid;
+	int		status;
+	char	**envp;
 
 	envp = to_envp();
 	pid = fork();
@@ -36,29 +36,30 @@ void exec_system_cmd(char *cmd_path, char **args)
 		waitpid(pid, &status, 0);
 		g_all.is_child = FALSE;
 		if (WIFSIGNALED(status))
-        {
-			if(WTERMSIG(status) == SIGINT)
+		{
+			if (WTERMSIG(status) == SIGINT)
 				g_all.exit_code = 130;
 			else if (WTERMSIG(status) == SIGQUIT)
 				g_all.exit_code = 131;
-        }
-        else
-		    g_all.exit_code = WEXITSTATUS(status);
+		}
+		else
+			g_all.exit_code = WEXITSTATUS(status);
 	}
 	free_d_pointer(envp);
 }
 
-void execute_single_command(t_commands command)
+void	execute_single_command(t_commands command)
 {
-	char *cmd_path;
-	int stdin;
-	int stdout;
+	char	*cmd_path;
+	int		stdin;
+	int		stdout;
 
 	save_std_fds(&stdin, &stdout);
-	if ((command.n_redirect > 0 && setup_redirections(command)) || command.n_args == 0)
+	if ((command.n_redirect > 0 && setup_redirections(command))
+		|| command.n_args == 0)
 	{
 		restore_std_fds(NONE, stdin, stdout);
-		return;
+		return ;
 	}
 	if (is_builtins(command.args[0]))
 		exec_builtins(command.args, command.n_args);

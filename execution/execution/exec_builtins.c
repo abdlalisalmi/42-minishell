@@ -6,13 +6,13 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:36:52 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/10 22:37:14 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:23:14 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution.h"
 
-void exec_builtins(char **args, int n_args)
+void	exec_builtins(char **args, int n_args)
 {
 	if (ft__strcmp(args[0], "cd"))
 		ft_cd(args, n_args);
