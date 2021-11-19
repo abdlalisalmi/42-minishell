@@ -6,15 +6,15 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 14:04:20 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/15 21:43:07 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 11:19:07 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../execution.h"
+#include "../execution.h"
 
-void free_d_pointer(char **ptr)
+void	free_d_pointer(char **ptr)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (ptr[++i])

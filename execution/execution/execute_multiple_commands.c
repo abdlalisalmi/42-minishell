@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/17 15:56:23 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 11:15:29 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int execute_child_command(int index, char** envp)
     return (pid);
 }
 
-void execute_multiple_commands()
+void execute_multiple_commands(void)
 {
 	char **envp;
     int status;

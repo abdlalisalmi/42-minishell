@@ -2,3 +2,8 @@
 minishell.dSYM
 minishell.a
 minishell
+execution/minishell
+execution/minishell.a
+execution/*.o
+execution/*/*.o
+execution/minishell.dSYM

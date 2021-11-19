@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:54:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/17 15:05:48 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 11:12:40 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static void handle_heredoc(int c_index, int r_index)
     char *fileindex;
     int fd;
 
-    g_all.heredoc = True;
+    g_all.heredoc = TRUE;
     while (get_user_input(&input, g_all.commands[c_index].redirect[r_index].file))
     {
         fileindex = ft__itoa(c_index);
         filename = ft__strjoin("/tmp/heredoc_", fileindex);
-        fd = open(filename, O_RDWR | O_CREAT | O_APPEND, PERMISSION);
+        fd = open(filename, O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
         write(fd, input, ft__strlen(input));
         write(fd, "\n", 1);
     }
@@ -57,7 +57,7 @@ void remove_heredoc_files(void)
                 if (g_all.commands[i].redirect[r].type == 3)
                     unlink(g_all.commands[i].redirect[r].file);
     }
-	g_all.heredoc = False;
+	g_all.heredoc = FALSE;
 }
 
 void setup_heredoc(void)

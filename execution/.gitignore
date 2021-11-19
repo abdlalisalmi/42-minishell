@@ -1,5 +1,0 @@
-minishell
-minishell.a
-*.o
-*/*.o
-minishell.dSYM
