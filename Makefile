@@ -90,7 +90,7 @@ E_SRCS 	=	execution/start_execution.c \
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS) $(INCLUDES)
-	@gcc $(FLAGS) $(READLINE_LIB_M_MAC) $(P_SRCS) $(E_SRCS) -o minishell 
+	@gcc $(FLAGS) $(READLINE_LIB_IMAC) $(P_SRCS) $(E_SRCS) -o minishell 
 
 clean:
 			@rm -rf *.o 
