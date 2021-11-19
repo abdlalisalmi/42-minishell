@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:54:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 16:29:17 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:42:53 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int get_user_input(char **input, char *end)
 {
 	*input = readline("> ");
-    if (*input != NULL && ft_strcompare(*input, end))
+    if (*input != NULL && ft_strcompare(*input, "") && ft_strcompare(*input, end))
         return (1);
     return (0);
 }
