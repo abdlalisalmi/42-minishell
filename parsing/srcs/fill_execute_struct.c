@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:40:36 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/17 16:03:17 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/19 11:59:46 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,5 @@ int	fill_execute_struct(t_tree *node)
 {
 	if (node != NULL)
 		fill_pipelines(node);
-	// printf("N_COMMANDS === %d\n", g_all.n_commands);
-	// printf("N_ARGS === %d\n", g_all.commands[0].n_args);
-	// printf("COMMAND === |%s|\n", g_all.commands[0].args[0]);
-	// printf("N_REDIR === %d\n", g_all.commands[0].n_redirect);
-	// printf("REDIRCTION === type = %d file = %s\n", g_all.commands[0].redirect[0].type, g_all.commands[0].redirect[0].file);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:55:39 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/18 23:32:18 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/19 12:13:07 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ int		ft_isspace(char *str);
 int		ft_num_words(char const *s1);
 char	*ft_itoa(int n);
 void	*realloc_edited(void *old_alloc, size_t count, size_t old_size);
-void	sig_handler(int	sig);
+void	sig_handler(int sig);
 
 #endif

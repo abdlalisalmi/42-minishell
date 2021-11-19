@@ -6,16 +6,16 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 23:27:51 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/18 23:38:56 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/19 11:58:46 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/main.h"
 
-int		ft_isspace(char *str)
+int	ft_isspace(char *str)
 {
-	int i;
-	int nb;
+	int	i;
+	int	nb;
 
 	i = -1;
 	nb = 0;

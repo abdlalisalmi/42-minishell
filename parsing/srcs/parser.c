@@ -6,16 +6,16 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 01:14:03 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/11 11:15:05 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/19 12:05:19 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
-t_parser *init_parser_lexer(char *line)
+t_parser	*init_parser_lexer(char *line)
 {
-	t_parser *parser;
-	t_lexer *lexer;
+	t_parser	*parser;
+	t_lexer		*lexer;
 
 	lexer = init_lexer(line);
 	parser = (t_parser *)malloc(sizeof(t_parser));
