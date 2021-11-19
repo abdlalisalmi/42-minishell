@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 20:51:10 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/16 00:37:40 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:58:53 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ char	*ft__strdup(const char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	if (!(ptr = malloc(i + 1)))
-		return (NULL);
+	ptr = malloc(i + 1);
 	i = 0;
 	while (str[i])
 	{

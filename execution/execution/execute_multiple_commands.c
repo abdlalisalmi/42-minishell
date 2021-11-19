@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 16:33:22 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:10:34 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,15 @@ void execute_multiple_commands(void)
     while (++i < g_all.n_commands)
     {
         waitpid(pids[i], &status, 0);
-		g_all.exit_code = WEXITSTATUS(status);
+        if (WIFSIGNALED(status))
+        {
+            if(WTERMSIG(status) == SIGINT)
+                g_all.exit_code = 130;
+            else if (WTERMSIG(status) == SIGQUIT)
+                g_all.exit_code = 131;
+        }
+        else
+		    g_all.exit_code = WEXITSTATUS(status);
     }
     g_all.is_child = FALSE;
     free_d_pointer(envp);

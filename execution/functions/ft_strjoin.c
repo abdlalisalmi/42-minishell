@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 14:39:29 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/17 14:46:42 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:59:53 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ char	*ft__strjoin(char *s1, char *s2)
 		return (NULL);
 	s1_len = ft__strlen(s1);
 	s2_len = ft__strlen(s2);
-	if (!(new_str = malloc(s1_len + s2_len + 1)))
-		return (NULL);
+	new_str = malloc(s1_len + s2_len + 1);
 	i = 0;
 	j = 0;
 	while (i < s1_len)

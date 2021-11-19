@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 12:33:22 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:10:59 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,15 @@ void exec_system_cmd(char *cmd_path, char **args)
 	{
 		waitpid(pid, &status, 0);
 		g_all.is_child = FALSE;
-		g_all.exit_code = status / 256;
+		if (WIFSIGNALED(status))
+        {
+			if(WTERMSIG(status) == SIGINT)
+				g_all.exit_code = 130;
+			else if (WTERMSIG(status) == SIGQUIT)
+				g_all.exit_code = 131;
+        }
+        else
+		    g_all.exit_code = WEXITSTATUS(status);
 	}
 	free_d_pointer(envp);
 }

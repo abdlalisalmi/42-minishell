@@ -6,11 +6,11 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 12:23:57 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/09 17:35:23 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:57:34 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../execution.h"
+#include "../execution.h"
 
 char	*ft_strappend(char *s1, char *s2)
 {
@@ -24,8 +24,7 @@ char	*ft_strappend(char *s1, char *s2)
 		return (NULL);
 	s1_len = ft__strlen(s1);
 	s2_len = ft__strlen(s2);
-	if (!(new_str = malloc(s1_len + s2_len + 1)))
-		return (NULL);
+	new_str = malloc(s1_len + s2_len + 1);
 	i = 0;
 	j = 0;
 	while (i < s1_len)
