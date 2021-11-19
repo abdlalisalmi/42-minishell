@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:59:55 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 17:36:20 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:35:11 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,49 @@ void	restore_std_fds(int type, int stdin, int stdout)
 		dup2(stdin, 0);
 }
 
+int	handle_right_and_doubleright(t_commands command, int i)
+{
+	int	fd;
+
+	fd = 0;
+	if (command.redirect[i].type == RIGHT)
+		fd = open(command.redirect[i].file, O_RDWR | O_CREAT
+				| O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	else if (command.redirect[i].type == DOUBLERIGHT)
+		fd = open(command.redirect[i].file, O_RDWR | O_CREAT
+				| O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (fd == -1)
+	{
+		ft__putstr_fd(strerror(errno), 2);
+		ft__putstr_fd("\n", 2);
+		return (1);
+	}
+	dup2(fd, 1);
+	close(fd);
+	return (0);
+}
+
+int	handle_input_and_heredoc(t_commands command, int i)
+{
+	int	fd;
+
+	fd = 0;
+	fd = open(command.redirect[i].file, O_RDONLY, S_IRUSR
+			| S_IWUSR | S_IRGRP | S_IROTH);
+	if (fd == -1)
+	{
+		ft__putstr_fd(strerror(errno), 2);
+		ft__putstr_fd("\n", 2);
+		return (1);
+	}
+	dup2(fd, 0);
+	close(fd);
+	return (0);
+}
+
 int	setup_redirections(t_commands command)
 {
 	int	i;
-	int	fd;
 	int	stdin;
 	int	stdout;
 
@@ -41,34 +80,14 @@ int	setup_redirections(t_commands command)
 		if (command.redirect[i].type == RIGHT
 			|| command.redirect[i].type == DOUBLERIGHT)
 		{
-			if (command.redirect[i].type == RIGHT)
-				fd = open(command.redirect[i].file, O_RDWR | O_CREAT
-						| O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-			else if (command.redirect[i].type == DOUBLERIGHT)
-				fd = open(command.redirect[i].file, O_RDWR | O_CREAT
-						| O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-			if (fd == -1)
-			{
-				ft__putstr_fd(strerror(errno), 2);
-				ft__putstr_fd("\n", 2);
+			if (handle_right_and_doubleright(command, i))
 				return (1);
-			}
-			dup2(fd, 1);
-			close(fd);
 		}
 		else if (command.redirect[i].type == LEFT
 			|| command.redirect[i].type == HEREDOC)
 		{
-			fd = open(command.redirect[i].file, O_RDONLY, S_IRUSR
-					| S_IWUSR | S_IRGRP | S_IROTH);
-			if (fd == -1)
-			{
-				ft__putstr_fd(strerror(errno), 2);
-				ft__putstr_fd("\n", 2);
+			if (handle_input_and_heredoc(command, i))
 				return (1);
-			}
-			dup2(fd, 0);
-			close(fd);
 		}
 	}
 	return (0);
