@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:25:29 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/19 17:07:34 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:21:39 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,9 @@
 void	child_sig(int sig)
 {
 	if (sig == SIGINT)
-	{
 		write(2, "\n", 1);
-	}
 	if (sig == SIGQUIT)
-	{
 		write(2, "Quit: 3\n", 8);
-		g_all.exit_code = 131;
-	}
 }
 
 void	parent_sig(int sig)
