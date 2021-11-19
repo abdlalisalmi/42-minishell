@@ -6,11 +6,12 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:40:36 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/19 11:59:46 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/19 19:39:25 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/tree.h"
+#include "../includes/parser.h"
 #include "../../common.h"
 
 void	fill_redirections(t_redirect *node, int cmd_index, int redire_index)

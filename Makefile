@@ -1,6 +1,6 @@
 NAME = 		minishell
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 INCLUDES =	common.h \
 			execution/execution.h \
@@ -33,7 +33,6 @@ P_SRCS 	= 	parsing/srcs/main.c \
 			parsing/srcs/init_tree.c \
 			parsing/srcs/parser_single_command.c \
 			parsing/srcs/parser_pipeline.c \
-			parsing/srcs/to_print.c \
 			parsing/srcs/freeing.c \
 			parsing/srcs/parser_check_errors.c \
 			parsing/srcs/fill_execute_struct.c \

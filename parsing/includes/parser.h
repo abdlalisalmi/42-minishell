@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:58:22 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/16 13:33:18 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/19 19:31:16 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ t_tree		*free_tree_command(t_tree *tree);
 t_tree		*free_tree_pipeline(t_tree *tree);
 void		free_parser(t_parser *parser);
 t_tree		*parser_pipeline(t_parser *parser, t_tree *tree);
-void		fill_execute_struct(t_tree *tree);
+int			fill_execute_struct(t_tree *node);
 // int		to_print(t_tree *node);
 #endif
