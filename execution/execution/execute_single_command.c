@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/17 16:04:54 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 12:33:22 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void exec_system_cmd(char *cmd_path, char **args)
 
 	envp = to_envp();
 	pid = fork();
+	g_all.is_child = TRUE;
 	if (pid < 0)
 		ft__putstr_fd("Failed forking child..\n", 2);
 	else if (pid == 0)
@@ -33,6 +34,7 @@ void exec_system_cmd(char *cmd_path, char **args)
 	else
 	{
 		waitpid(pid, &status, 0);
+		g_all.is_child = FALSE;
 		g_all.exit_code = status / 256;
 	}
 	free_d_pointer(envp);
