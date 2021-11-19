@@ -1,6 +1,6 @@
 NAME = 		minishell
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 INCLUDES =	common.h \
 			execution/execution.h \
