@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 11:15:29 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:33:22 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int execute_child_command(int index, char** envp)
 
     pipe(g_all.commands[index].fd);
     pid = fork();
+    g_all.is_child = TRUE;
 	if (pid < 0)
 		ft__putstr_fd("Failed forking child..\n", 2);
 	else if (pid == 0)
@@ -77,5 +78,6 @@ void execute_multiple_commands(void)
         waitpid(pids[i], &status, 0);
 		g_all.exit_code = WEXITSTATUS(status);
     }
+    g_all.is_child = FALSE;
     free_d_pointer(envp);
 }

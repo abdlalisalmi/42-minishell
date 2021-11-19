@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:54:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 11:12:40 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:42:53 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int get_user_input(char **input, char *end)
 {
 	*input = readline("> ");
-    if (ft_strcompare(*input, end))
+    if (*input != NULL && ft_strcompare(*input, "") && ft_strcompare(*input, end))
         return (1);
     return (0);
 }
@@ -28,18 +28,18 @@ static void handle_heredoc(int c_index, int r_index)
     int fd;
 
     g_all.heredoc = TRUE;
-    while (get_user_input(&input, g_all.commands[c_index].redirect[r_index].file))
+    fileindex = ft__itoa(c_index);
+    filename = ft__strjoin("/tmp/__macosx__sys__kernel__", fileindex);
+    fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    while (get_user_input(&input, g_all.commands[c_index].redirect[r_index].file) && fd > -1)
     {
-        fileindex = ft__itoa(c_index);
-        filename = ft__strjoin("/tmp/heredoc_", fileindex);
-        fd = open(filename, O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
         write(fd, input, ft__strlen(input));
         write(fd, "\n", 1);
     }
     close(fd);
-    g_all.commands[c_index].redirect[r_index].file = ft__strdup(filename);
+    free(g_all.commands[c_index].redirect[r_index].file);
+    g_all.commands[c_index].redirect[r_index].file = filename;
     free(input);
-    free(filename);
     free(fileindex);
 }
 
