@@ -6,13 +6,13 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 14:02:04 by aes-salm          #+#    #+#              #
-#    Updated: 2021/11/20 14:02:06 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/11/20 16:57:57 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 		minishell
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 INCLUDES =	common.h \
 			execution/execution.h \

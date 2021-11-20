@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:36:52 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 17:23:14 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/20 17:05:55 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	exec_builtins(char **args, int n_args)
 {
+	char *tmp;
+
 	if (ft__strcmp(args[0], "cd"))
 		ft_cd(args, n_args);
 	else if (ft__strcmp(args[0], "echo") || ft__strcmp(args[0], "ECHO"))
@@ -25,7 +27,11 @@ void	exec_builtins(char **args, int n_args)
 	else if (ft__strcmp(args[0], "export"))
 		ft_export(args, n_args);
 	else if (ft__strcmp(args[0], "pwd") || ft__strcmp(args[0], "PWD"))
-		printf("%s\n", ft_pwd());
+	{
+		tmp = ft_pwd();
+		printf("%s\n", tmp);
+		free(tmp);
+	}
 	else if (ft__strcmp(args[0], "unset"))
 		ft_unset(args, n_args);
 }

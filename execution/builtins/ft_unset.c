@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:03:15 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/18 14:15:42 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/20 16:48:22 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void	update_env(char *name)
 {
 	int	i;
-	int	index;
 
 	i = -1;
-	index = 0;
 	while (++i < g_all.n_env)
 	{
-		if (!ft__strcmp(g_all.env[i].name, name))
+		if (ft_strcompare(g_all.env[i].name, name) == 0)
 		{
-			g_all.env[index].name = g_all.env[i].name;
-			g_all.env[index].value = g_all.env[i].value;
+			while (i < g_all.n_env - 1)
+			{
+				free(g_all.env[i].name);
+				g_all.env[i].name = ft__strdup(g_all.env[i + 1].name);
+				free(g_all.env[i].value);
+				g_all.env[i].value = ft__strdup(g_all.env[i + 1].value);
+				i++;
+			}
+			g_all.n_env--;
+			break;
 		}
-		else
-		{
-			g_all.env[index].name = NULL;
-			g_all.env[index].value = NULL;
-		}
-		index++;
 	}
 }
 
