@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 18:20:44 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/18 14:13:30 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/20 11:55:55 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_exit(char **args, int n_args)
 	unsigned long	code;
 
 	if (n_args == 1)
-		exit(EXIT_SUCCESS);
+		exit(g_all.exit_code);
 	else if (n_args >= 2)
 	{
 		code = get_exit_code(args[1]);
