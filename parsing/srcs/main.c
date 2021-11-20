@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:54:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/20 11:58:02 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/20 12:07:48 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ int	main(int argc, char **argv, char **envp)
 			fill_execute_struct(tree);
 			start_execution();
 		}
-		else
-			g_all.exit_code = 258;
-		// system("leaks minishell");
 	}
 	return (0);
 }
