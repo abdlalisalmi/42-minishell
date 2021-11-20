@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 01:03:08 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/19 12:08:29 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/20 13:23:02 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_cmd_line(char **line)
 	if (*line == NULL)
 	{
 		write(2, "\033MMINISHELL$ exit\n", 18);
-		exit(0);
+		exit(g_all.exit_code);
 	}
 	if (ft_isspace(*line))
 	{

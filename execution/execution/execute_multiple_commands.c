@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 20:17:11 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/20 13:57:02 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,30 @@ void	exec_sys_command(int index, char **envp)
 	}
 }
 
+int	execute_child_command_part_2(int index, pid_t pid)
+{
+	char	**envp;
+
+	envp = to_envp();
+	init_pipes(index);
+	if (setup_redirections(g_all.commands[index]))
+		return (pid);
+	if (g_all.commands[index].n_args > 0)
+	{
+		if (is_builtins(g_all.commands[index].args[0]))
+			exec_builtins(g_all.commands[index].args,
+				g_all.commands[index].n_args);
+		else
+			exec_sys_command(index, envp);
+	}
+	exit(g_all.exit_code);
+	return (0);
+}
+
 int	execute_child_command(int index)
 {
 	pid_t	pid;
-	char	**envp;
+	pid_t	c_pid;
 
 	pipe(g_all.commands[index].fd);
 	pid = fork();
@@ -46,19 +66,9 @@ int	execute_child_command(int index)
 		ft__putstr_fd("Failed forking child..\n", 2);
 	else if (pid == 0)
 	{
-		envp = to_envp();
-		init_pipes(index);
-		if (setup_redirections(g_all.commands[index]))
-			return (pid);
-		if (g_all.commands[index].n_args > 0)
-		{
-			if (is_builtins(g_all.commands[index].args[0]))
-				exec_builtins(g_all.commands[index].args,
-					g_all.commands[index].n_args);
-			else
-				exec_sys_command(index, envp);
-		}
-		exit(g_all.exit_code);
+		c_pid = execute_child_command_part_2(index, pid);
+		if (c_pid != 0)
+			return (c_pid);
 	}
 	close_pipes(index);
 	return (pid);

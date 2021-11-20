@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freeing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 01:37:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/16 14:09:03 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/20 12:58:34 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,21 @@ t_tree	*free_tree_command(t_tree *tree)
 {
 	if (tree != NULL)
 	{
-		while (tree->args_size-- > 0)
-			free(tree->args_val[tree->args_size]);
-		free(tree->args_val);
-		while (tree->redir_size-- > 0)
+		if (tree->args_size > 0)
 		{
-			free(tree->redir[tree->redir_size]->filename);
-			free(tree->redir[tree->redir_size]);
+			while (tree->args_size-- > 0)
+				free(tree->args_val[tree->args_size]);
+			free(tree->args_val);
 		}
-		free(tree->redir);
+		if (tree->redir_size > 0)
+		{
+			while (tree->redir_size-- > 0)
+			{
+				free(tree->redir[tree->redir_size]->filename);
+				free(tree->redir[tree->redir_size]);
+			}
+			free(tree->redir);
+		}
 		free(tree);
 	}
 	return (NULL);

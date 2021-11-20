@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:54:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/20 12:07:48 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/20 14:00:10 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ void	signal_call(void)
 {
 	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, sig_handler);
+}
+
+void	execution_call(t_tree *tree)
+{
+	fill_execute_struct(tree);
+	free_tree_pipeline(tree);
+	start_execution();
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -37,10 +44,9 @@ int	main(int argc, char **argv, char **envp)
 		tree = start_parsing(parser);
 		free_parser(parser);
 		if (tree != NULL)
-		{
-			fill_execute_struct(tree);
-			start_execution();
-		}
+			execution_call(tree);
+		else
+			g_all.exit_code = 258;
 	}
 	return (0);
 }

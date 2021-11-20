@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:27:42 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/18 14:18:08 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/20 12:33:44 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	set_env(char *name, char *value)
 	{
 		if (ft__strcmp(name, g_all.env[i].name))
 		{
+			free(g_all.env[i].value);
 			g_all.env[i].value = ft__strdup(value);
 			return (1);
 		}

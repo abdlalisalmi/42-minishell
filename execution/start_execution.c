@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 19:51:47 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/20 12:31:14 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ void	handle_under_env(void)
 			free(args);
 		}
 		else
-			set_env("_", g_all.commands[l_cmd].args[l_args]);
+		{
+			args = ft__strdup(g_all.commands[l_cmd].args[l_args]);
+			set_env("_", args);
+			free(args);
+		}
 	}
 }
 
