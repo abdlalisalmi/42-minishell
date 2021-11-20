@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 15:25:29 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/19 17:21:39 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/20 11:59:20 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	parent_sig(int sig)
 
 	if (sig == SIGINT)
 	{
+		g_all.exit_code = 1;
 		buffer = ft_strdup(rl_line_buffer);
 		rl_on_new_line();
 		rl_replace_line("", 0);
