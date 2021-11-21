@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:54:21 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/20 14:00:10 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/21 22:01:47 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	signal_call(void)
 void	execution_call(t_tree *tree)
 {
 	fill_execute_struct(tree);
-	free_tree_pipeline(tree);
 	start_execution();
+	free_tree_pipeline(tree);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -47,6 +47,7 @@ int	main(int argc, char **argv, char **envp)
 			execution_call(tree);
 		else
 			g_all.exit_code = 258;
+		// system("leaks minishell");
 	}
 	return (0);
 }
