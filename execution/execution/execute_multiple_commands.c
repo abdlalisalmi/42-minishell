@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:33:11 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/20 13:57:02 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/21 23:44:53 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,8 @@ void	exec_sys_command(int index, char **envp)
 	char	*cmd_path;
 
 	cmd_path = get_cmd_path(g_all.commands[index].args[0]);
-	if (!cmd_path)
-	{
-		ft__putstr_fd("minishell: ", 2);
-		ft__putstr_fd(g_all.commands[index].args[0], 2);
-		ft__putstr_fd(" command not found\n", 2);
-		exit(127);
-	}
-	else
-	{
-		if (execve(cmd_path, g_all.commands[index].args, envp) == -1)
-		{
-			ft__putstr_fd(strerror(errno), 2);
-			ft__putstr_fd("\n", 2);
-		}
-	}
+	execve(cmd_path, g_all.commands[index].args, envp);
+	handle_errors(g_all.commands[index].args[0], errno);
 }
 
 int	execute_child_command_part_2(int index, pid_t pid)

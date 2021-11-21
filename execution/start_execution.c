@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/21 22:47:58 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/21 23:50:18 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ void	free_execution_struct(void)
 void	start_execution(void)
 {
 	if (g_all.commands[0].n_args > 0 && g_all.commands[0].args[0][0] == '\0')
+	{
+		free_execution_struct();
 		return ;
+	}
 	handle_under_env();
 	setup_heredoc();
 	if (g_all.n_commands == 1)

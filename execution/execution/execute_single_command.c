@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:52:19 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/20 12:37:49 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/21 23:39:20 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	set_exit_code(int status)
 		g_all.exit_code = WEXITSTATUS(status);
 }
 
-void	exec_system_cmd(char *cmd_path, char **args)
+void	exec_system_cmd(t_commands command)
 {
 	pid_t	pid;
 	int		status;
 	char	**envp;
+	char	*cmd_path;
 
 	envp = NULL;
 	pid = fork();
@@ -39,35 +40,16 @@ void	exec_system_cmd(char *cmd_path, char **args)
 	else if (pid == 0)
 	{
 		envp = to_envp();
-		if (execve(cmd_path, args, envp) == -1)
-		{
-			ft__putstr_fd(strerror(errno), 2);
-			ft__putstr_fd("\n", 2);
-		}
+		cmd_path = get_cmd_path(command.args[0]);
+		execve(cmd_path, command.args, envp);
+		handle_errors(command.args[0], errno);
 	}
 	else
 	{
 		waitpid(pid, &status, 0);
 		g_all.is_child = FALSE;
 		set_exit_code(status);
-		free(cmd_path);
 	}
-}
-
-void	execute_single_command_part_2(t_commands command)
-{
-	char	*cmd_path;
-
-	cmd_path = get_cmd_path(command.args[0]);
-	if (!cmd_path)
-	{
-		ft__putstr_fd("minishell: ", 2);
-		ft__putstr_fd(command.args[0], 2);
-		ft__putstr_fd(" command not found\n", 2);
-		g_all.exit_code = 127;
-	}
-	else
-		exec_system_cmd(cmd_path, command.args);
 }
 
 void	execute_single_command(t_commands command)
@@ -85,6 +67,6 @@ void	execute_single_command(t_commands command)
 	if (is_builtins(command.args[0]))
 		exec_builtins(command.args, command.n_args);
 	else
-		execute_single_command_part_2(command);
+		exec_system_cmd(command);
 	restore_std_fds(NONE, stdin, stdout);
 }
