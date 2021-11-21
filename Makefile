@@ -6,13 +6,13 @@
 #    By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 14:02:04 by aes-salm          #+#    #+#              #
-#    Updated: 2021/11/21 22:28:57 by aes-salm         ###   ########.fr        #
+#    Updated: 2021/11/21 23:24:19 by aes-salm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 		minishell
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 INCLUDES =	common.h \
 			execution/execution.h \
@@ -70,6 +70,7 @@ E_SRCS 	=	execution/start_execution.c \
 			execution/execution/setup_pipes.c \
 			execution/execution/setup_redirections.c \
 			execution/execution/setup_heredoc.c \
+			execution/execution/handle_errors.c \
 			execution/utils/free_d_pointer.c \
 			execution/utils/get_cmd_path.c \
 			execution/env/collect_env.c \
