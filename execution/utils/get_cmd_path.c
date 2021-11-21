@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:04:25 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/19 19:56:17 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/21 13:02:01 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,15 @@ char	*search_for_path(char *cmd, char *path)
 char	*get_cmd_path(char *cmd)
 {
 	char	**paths;
+	char	*path_env;
 	char	*full_path;
 	int		i;
 
 	if (ft_strchr(cmd, '/'))
 		return (cmd);
-	paths = ft__split(get_env("PATH"), ':');
+	path_env = get_env("PATH");
+	paths = ft__split(path_env, ':');
+	free(path_env);
 	i = -1;
 	while (paths[++i])
 	{
