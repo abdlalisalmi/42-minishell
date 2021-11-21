@@ -6,7 +6,7 @@
 /*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 21:13:35 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/21 22:30:27 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/21 22:39:08 by atahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	remove_new_line_check(char *arg)
 {
 	int	i;
 
+	if (!arg)
+		return (0);
 	if (arg[0] == '-' && arg[1] == '-')
 		return (0);
 	if (ft__strcmp(arg, "-n"))

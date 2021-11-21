@@ -6,7 +6,7 @@
 #    By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 14:02:04 by aes-salm          #+#    #+#              #
-#    Updated: 2021/11/21 22:16:13 by atahiri          ###   ########.fr        #
+#    Updated: 2021/11/21 22:39:21 by atahiri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,11 @@ E_SRCS 	=	execution/start_execution.c \
 all: $(NAME)
 
 $(NAME): $(P_SRCS) $(E_SRCS) $(INCLUDES)
+<<<<<<< HEAD
 	@gcc $(FLAGS) $(READLINE_LIB_MAC) $(P_SRCS) $(E_SRCS) -o minishell 
+=======
+	@gcc $(FLAGS) $(READLINE_LIB_M_MAC) $(P_SRCS) $(E_SRCS) -o minishell 
+>>>>>>> 009d395de5b0f46c84a7b0fe1c6413f8be332bd5
 
 clean:
 			@rm -rf *.o 
