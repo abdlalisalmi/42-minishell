@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:03:15 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/22 01:30:04 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:12:08 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@ void	update_env(char *name)
 	{
 		if (ft_strcompare(g_all.env[i].name, name) == 0)
 		{
+			free(g_all.env[i].name);
+			free(g_all.env[i].value);
 			while (i < g_all.n_env - 1)
 			{
-				free(g_all.env[i].name);
 				g_all.env[i].name = ft__strdup(g_all.env[i + 1].name);
-				free(g_all.env[i].value);
 				g_all.env[i].value = ft__strdup(g_all.env[i + 1].value);
 				i++;
+				free(g_all.env[i].name);
+				free(g_all.env[i].value);
 			}
 			g_all.n_env--;
 			break ;

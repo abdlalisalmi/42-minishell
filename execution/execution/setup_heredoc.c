@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:54:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/22 01:22:22 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:27:42 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ static void	handle_heredoc(int c_index, int r_index)
 	{
 		write(fd, input, ft__strlen(input));
 		write(fd, "\n", 1);
+		free(input);
 	}
 	close(fd);
 	free(g_all.commands[c_index].redirect[r_index].file);
 	g_all.commands[c_index].redirect[r_index].file = filename;
 	free(input);
 	free(fileindex);
+	if (g_all.n_commands == 0)
+		free(filename);
 }
 
 void	remove_heredoc_files(void)

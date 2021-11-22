@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:07:05 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/22 01:29:15 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:41:52 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	handle_errors(char *arg, int _errno);
 /*
 ** Utils functions
 */
-void	free_d_pointer(char **ptr);
 char	*get_cmd_path(char *cmd);
 char	**to_envp(void);
 
