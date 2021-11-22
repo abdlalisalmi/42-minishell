@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:40:36 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/20 13:58:34 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 01:24:20 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	fill_command(t_tree *node, int cmd_index)
 		while (++i < node->redir_size)
 			fill_redirections(node->redir[i], cmd_index, i);
 	}
+	else
+		g_all.commands[cmd_index].n_redirect = 0;
 	i = -1;
 	g_all.commands[cmd_index].n_args = node->args_size;
 	g_all.commands[cmd_index].args = malloc(sizeof(char *)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:25:31 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/21 23:50:18 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/22 01:20:51 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	free_execution_struct(void)
 			free(g_all.commands[i].redirect);
 		}
 	}
-	free(g_all.commands);
+	if (g_all.commands)
+		free(g_all.commands);
 }
 
 void	start_execution(void)

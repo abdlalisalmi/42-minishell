@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:54:46 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/20 13:45:48 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 01:22:22 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,12 @@ void	setup_heredoc(void)
 	{
 		r = -1;
 		if (g_all.commands[i].n_redirect > 0)
+		{
 			while (++r < g_all.commands[i].n_redirect)
+			{
 				if (g_all.commands[i].redirect[r].type == 3)
 					handle_heredoc(i, r);
+			}
+		}
 	}
 }

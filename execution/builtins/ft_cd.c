@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:33:08 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/21 22:10:20 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 00:19:02 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ int	ft_cd(char **args, int n_args)
 	set_env("PWD", pwd);
 	free(pwd);
 	g_all.exit_code = 0;
-
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collect_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atahiri <atahiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:39:01 by atahiri           #+#    #+#             */
-/*   Updated: 2021/11/17 16:08:32 by atahiri          ###   ########.fr       */
+/*   Updated: 2021/11/22 00:42:26 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 char	*collect_env_variables(t_lexer *lexer)
 {
-	char	*fr;
 	char	*str;
+	char	*env_str;
 	int		i;
 	int		j;
 
@@ -24,16 +24,13 @@ char	*collect_env_variables(t_lexer *lexer)
 	while (lexer->cur_char == '_' || ft_isalnum(lexer->cur_char))
 		lexer_forward(lexer);
 	j = lexer->cur_index;
-	str = ft_substr(lexer->cmd_line, i, j - i);
-	if (str == NULL)
+	env_str = ft_substr(lexer->cmd_line, i, j - i);
+	if (env_str == NULL)
 		put_error(errno);
-	fr = str;
-	str = get_env(str);
+	str = get_env(env_str);
+	free(env_str);
 	if (str == NULL)
 		str = ft_strdup(" ");
-	else
-		str = ft_strdup(str);
-	free(fr);
 	return (str);
 }
 
