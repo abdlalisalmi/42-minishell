@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:07:05 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/21 23:41:27 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 01:29:15 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		is_builtins(char *cmd);
 void	exec_builtins(char **args, int n_args);
 void	execute_single_command(t_commands command);
 void	execute_multiple_commands(void);
-void    handle_errors(char *arg, int _errno);
+void	handle_errors(char *arg, int _errno);
 
 /*
 ** Utils functions

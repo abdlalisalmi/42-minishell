@@ -6,7 +6,7 @@
 /*   By: aes-salm <aes-salm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:33:08 by aes-salm          #+#    #+#             */
-/*   Updated: 2021/11/22 00:19:02 by aes-salm         ###   ########.fr       */
+/*   Updated: 2021/11/22 01:29:44 by aes-salm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_cd_without_args(void)
 {
-	char *home;
+	char	*home;
 
 	home = get_env("HOME");
 	if (home == NULL)
@@ -39,7 +39,7 @@ int	handle_cd_without_args(void)
 
 int	ft_cd(char **args, int n_args)
 {
-	char *pwd;
+	char	*pwd;
 
 	if (n_args == 1)
 		return (handle_cd_without_args());
